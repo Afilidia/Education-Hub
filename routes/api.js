@@ -15,8 +15,8 @@ const crypto = require('crypto')
 , cipher = crypto.createCipheriv(algorithm, secretKey, crypto.randomBytes(16))
 
 , connection = mysql.createConnection({
-  host     : process.env.HOST,//+":"+process.env.PORT,
-  user     : process.env.USER,
+  host     : process.env.HOST,
+  user     : process.env.USERNAME,
   password : process.env.PASSWORD,
   database : process.env.DATABASE
 });

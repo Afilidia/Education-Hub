@@ -6,8 +6,7 @@
 
 ### Required .env file with:
 - HOST
-- PORT
 - DATABASE
-- USER
+- USERNAME
 - PASSWORD
 - ENCRYPT_KEY
