@@ -39,7 +39,6 @@ let tokens = {}
 , loadSave = () => {
   try {
     tokens = require("../cookies.json");
-    main();
   } catch (error) {
     framework.log(0, "$(fg-red)Error in JSON file! Trying to restore last working version...");
     fs.mkdir("./recovery/",
@@ -77,13 +76,11 @@ let tokens = {}
           if (err||parsingFail) {
             framework.log(0, "$(bg-red)System backup saves are incorrect, starting with clear saves.");
             fs.writeFileSync('./cookies.json', JSON.stringify({}));
-            main();
           } else {
             framework.log(0, "$(fg-green)Restoring data from last start backup");
             fs.writeFileSync('./cookies.json', JSON.stringify(require("../cookies-start-backup.json")));
             tokens = require("../cookies.json");
             framework.log(0, "$(fg-green)$(gb-bright)Success, starting!");
-            main();
           }
         })
       } else {
@@ -91,7 +88,6 @@ let tokens = {}
         fs.writeFileSync('./cookies.json', JSON.stringify(require("../cookies-lastsave-backup.json")));
         tokens = require("../cookies.json");
         framework.log(0, "$(fg-green)$(gb-bright)Success, starting!");
-        main();
       }
     })
   }
