@@ -141,12 +141,12 @@ router.post('/login', async (req, res, next) => {
   password = encrypt(password);
 
   let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)} AND password=${mysql.escape(password)}`);
-  if(q&&q.length == 1) {
+  if(q) {
       let r;
       do {
           r = getRandomString(40);
       } while(tokens[r]);
-      tokens[r] = {user: q[0].id, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
+      tokens[r] = {user: q.id, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
       res.cookie('token', r);
       res.redirect("/app");
   } else {
@@ -171,12 +171,12 @@ router.post('/register', async (req, res, next) => {
   password = encrypt(password);
 
   let q2 = await query(`INSERT INTO users (login, password) VALUES (${mysql.escape(login)}, ${mysql.escape(password)})`);
-  if(q2&&q2.length>0) {
+  if(q2) {
       let r;
       do {
           r = getRandomString(40);
       } while(tokens[r]);
-      tokens[r] = {user: q2[0].id, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
+      tokens[r] = {user: q2.id, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
       res.cookie('token', r);
       res.redirect("/app");
   } else {
