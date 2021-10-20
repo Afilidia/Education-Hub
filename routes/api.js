@@ -11,7 +11,7 @@ dotenv.config();
 
 const CryptoJS = require("crypto-js")
 , secretKey = process.env.ENCRYPT_KEY
-, encrypt = (pass) => {return CryptoJS.AES.encrypt(pass, secretKey);}
+, encrypt = (pass) => {return CryptoJS.AES.encrypt(pass, secretKey).toString();}
 
 , connection = mysql.createConnection({
   host     : process.env.HOST,
