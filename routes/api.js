@@ -154,10 +154,9 @@ router.post('/todo/update', async (req, res, next) => {
   if(!apiLoggedOnly) return res.redirect('/login');
   
   let done = req.body.done||false;
-  let removed = req.body.removed||false;
   let task = req.body.task||false;
   let id = req.body.id||false;
-  if(!done || !removed || !task || !id) return res.redirect('/todo');
+  if(!done || !task || !id) return res.redirect('/todo');
 
   let q = await query(`UPDATE todo SET done = ${mysql.escape(done)}, task = ${mysql.escape(task)} WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND id = ${mysql.escape(id)} AND removed = false`);
   res.json(q);
