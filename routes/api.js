@@ -132,6 +132,47 @@ let tokens = {}
 
 loadSave();
 
+router.post('/todo/create', async (req, res, next) => {
+  activity(req, res);
+  if(!apiLoggedOnly) return res.redirect('/login');
+
+  let task = req.body.task||false;
+  if(!task) return res.redirect('/todo');
+
+  let q = await query(`INSERT INTO todo (user_id, task) VALUES (${mysql.escape(tokens[req.cookies.token].id)}, ${mysql.escape(task)})`);
+  res.json(q);
+});
+router.post('/todo/read', async (req, res, next) => {
+  activity(req, res);
+  if(!apiLoggedOnly) return res.redirect('/login');
+
+  let q = await query(`SELECT * FROM todo WHERE user_id=${mysql.escape(tokens[req.cookies.token].id)} AND removed = false`);
+  res.json(q);
+});
+router.post('/todo/update', async (req, res, next) => {
+  activity(req, res);
+  if(!apiLoggedOnly) return res.redirect('/login');
+  
+  let done = req.body.done||false;
+  let removed = req.body.removed||false;
+  let task = req.body.task||false;
+  let id = req.body.id||false;
+  if(!done || !removed || !task || !id) return res.redirect('/todo');
+
+  let q = await query(`UPDATE todo SET done = ${mysql.escape(done)}, task = ${mysql.escape(task)} WHERE user_id=${mysql.escape(tokens[req.cookies.token].id)} AND id = ${mysql.escape(id)} AND removed = false`);
+  res.json(q);
+});
+router.post('/todo/delete', async (req, res, next) => {
+  activity(req, res);
+  if(!apiLoggedOnly) return res.redirect('/login');
+  
+  let id = req.body.id||false;
+  if(!id) return res.redirect('/todo');
+
+  let q = await query(`DELETE FROM todo WHERE user_id=${mysql.escape(tokens[req.cookies.token].id)} AND removed = false AND id = ${mysql.escape(id)}`);
+  res.json(q);
+});
+
 router.post('/login', async (req, res, next) => {
   activity(req, res);
   let login = req.body.login||false;
