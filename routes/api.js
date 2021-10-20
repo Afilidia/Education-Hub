@@ -128,7 +128,7 @@ let tokens = {}
 
 loadSave();
 
-router.post('/login', function(req, res, next) {
+router.post('/login', async (req, res, next) => {
   activity(req, res);
   let login = req.body.login||false;
   if(!login) return res.redirect('/');
@@ -151,7 +151,7 @@ router.post('/login', function(req, res, next) {
   }
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/register', async (req, res, next) => {
   activity(req, res);
   let login = req.body.login||false;
   if(!login) return res.redirect('/');
