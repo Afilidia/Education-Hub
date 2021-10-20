@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+, router = express.Router()
 
-const crypto = require('crypto')
+, crypto = require('crypto')
 , algorithm = 'aes-256-ctr'
 , secretKey = process.env.ENCRYPT_KEY
 , cipher = crypto.createCipheriv(algorithm, secretKey, crypto.randomBytes(16))
@@ -22,6 +22,12 @@ try {
 
 
 let tokens = {}
+
+, save = () => {
+  fs.writeFileSync('./cookies-lastsave-backup.json', JSON.stringify(require("../cookies.json")));
+  fs.writeFileSync('./cookies.json', JSON.stringify(tokens));
+}
+
 , loadSave = () => {
   try {
     tokens = require("../cookies.json");
@@ -101,7 +107,28 @@ let tokens = {}
   }
 }
 
-router.get('/login', function(req, res, next) {
+, activity = (req, res) => {
+  if(req.cookies.token&&tokens[req.cookies.token]) {
+    tokens[req.cookies.token].lastActivity = new Date().getTime();
+    res.cookie("activity", tokens[req.cookies.token].lastActivity + 60000*60*2 + 10000);
+  }
+}
+
+
+, getRandomString = (length) => {
+  var result = "";
+  var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
+
+loadSave();
+
+router.post('/login', function(req, res, next) {
   activity(req, res);
   let login = req.body.login||false;
   if(!login) return res.redirect('/');
@@ -110,7 +137,7 @@ router.get('/login', function(req, res, next) {
 
   password = Buffer.concat([cipher.update(password), cipher.final()]);
 
-  let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)}`);
+  let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)} AND password=${mysql.escape(password)}`);
   if(q&&q.length == 1) {
       let r;
       do {
@@ -120,9 +147,44 @@ router.get('/login', function(req, res, next) {
       res.cookie('token', r);
       res.redirect("/app");
   } else {
-      res.cookie(`loginError`, true);
-      res.redirect("/login");
+      res.redirect("/login?error=1");
   }
 });
+
+router.post('/register', function(req, res, next) {
+  activity(req, res);
+  let login = req.body.login||false;
+  if(!login) return res.redirect('/');
+  let password = req.body.password||false;
+  if(!password) return res.redirect('/');
+
+  if(login.length < 3 || password.length < 8) return res.redirect('/register?error=1');
+  
+  let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)}`);
+  if (q && q.length > 0) return res.redirect('/register?error=1');
+
+  password = Buffer.concat([cipher.update(password), cipher.final()]);
+
+  let q = await query(`INSERT INTO users (login, password) VALUES (${mysql.escape(login)}, ${mysql.escape(password)})`);
+  if(q&&q.length == 1) {
+      let r;
+      do {
+          r = getRandomString(40);
+      } while(tokens[r]);
+      tokens[r] = {user: q[0].id, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
+      res.cookie('token', r);
+      res.redirect("/app");
+  } else {
+      res.redirect('/register?error=1');
+  }
+});
+
+setInterval(() => {
+  Object.keys(tokens).forEach(tokenid => {
+    if(!tokens[tokenid].lastActivity||tokens[tokenid].lastActivity+60000*60*24<new Date().getTime()) tokens[tokenid].mod = false;
+    if(!tokens[tokenid].created||tokens[tokenid].created+60000*60*24*30*6<new Date().getTime()) delete tokens[tokenid];
+  });
+  save();
+}, 10000);
 
 module.exports = router;

@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /*
 Disallow: /api/*
-Sitemap: https://afilidia.com/sitemap.xml
+Sitemap: https://edu.afilidia.com/sitemap.xml
