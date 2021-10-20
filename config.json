@@ -1,0 +1,28 @@
+{
+    "framework": {
+        "title//": "defines title showed in places like logs, admin panel, etc",
+        "title": "Education HUB",
+        "logger": {
+            "level//": "defines how much logs to show",
+            "level": 7
+        }
+    },
+    "server": {
+        "protocol": "http",
+        "url": "192.109.240.56",
+        "qualifiedURLs//": "Core anti-theft",
+        "qualifiedURLs": ["http://192.109.240.56:10002/","https://edu.afilidia.com/","http://edu.afilidia.com/"],
+        "port": 10002,
+        "api": {
+            "path": "/api"
+        }
+    },
+    "docs": {
+        "user": "asdawdsghd535345admin",
+        "pass": "dawdsghd5353"
+    },
+    "discord": {
+        "webhook": "",
+        "enabled": false
+    }
+}

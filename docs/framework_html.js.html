@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding meta -->
+    
+
+    <!-- Adding external script-->
+    
+
+    <!-- Adding external style-->
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+
+    <!-- Adding overlay script-->
+    
+
+    <!-- Adding overlay style-->
+    
+
+
+    <title>
+      framework/html.js
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/heading.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-dark.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="5630166" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion collapsed child" id=9907617><div class="accordion-heading child"><a href="Combination.html">Combination</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Combination.html#.hex">hex</a></li><li data-type='method'><a href="Combination.html#.number">number</a></li></ul></li><li class="accordion collapsed child" id=2018742><div class="accordion-heading child"><a href="InteractiveComponent.html">InteractiveComponent</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="InteractiveComponent.html#.get">get</a></li></ul></li><li class="accordion-list" id=""><a href="QueueManager.html">QueueManager</a></li><li class="accordion-list" id=""><a href="Thread.html">Thread</a></li></ul> </div><div class="accordion collapsed" id="7887897" > <h3 class="accordion-heading">Global<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="global.html#copy">copy</a></li><li class="accordion-list" id=""><a href="global.html#e">e</a></li><li class="accordion-list" id=""><a href="global.html#getAccordionIdsFromLocalStorage">getAccordionIdsFromLocalStorage</a></li><li class="accordion-list" id=""><a href="global.html#init">init</a></li><li class="accordion-list" id=""><a href="global.html#line">line</a></li><li class="accordion-list" id=""><a href="global.html#log">log</a></li><li class="accordion-list" id=""><a href="global.html#removeAccordionIdFromLocalStorage">removeAccordionIdFromLocalStorage</a></li><li class="accordion-list" id=""><a href="global.html#setAccordionIdToLocalStorage">setAccordionIdToLocalStorage</a></li><li class="accordion-list" id=""><a href="global.html#toggleNavbar">toggleNavbar</a></li></ul> </div></div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        framework/html.js
+      </h1>
+      
+
+      
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let JavaScriptObfuscator = require('javascript-obfuscator'),
+data = require('../data'),
+obfuscator = JavaScriptObfuscator,
+html = {
+    /**
+     * ### Compile objected HTML code
+     * @param {object} objectedHTML Objected HTML code
+     * @returns {string} Stringified HTML code ready to be sended to client or include in other objected HTML code
+     */
+    compile: (objectedHTML) => {
+        let compute = (id, from) => {
+            if(!id&amp;&amp;typeof from == "object") {
+                let generated = "";
+                Object.keys(from).forEach(element => {
+                    generated += compute(element, from[element]);
+                });
+                return generated
+            } 
+            if(typeof from == "string") return from;
+            let content = [];
+            Object.keys(from.content||{}).forEach(element => {
+                content.push(compute(element, from.content[element]))
+            });
+            let inline = "";
+            Object.keys(from.inline||{}).forEach(element => {
+                inline+=` ${element}="${from.inline[element]}"`;
+            });
+            return `&lt;${from.tag||"div"}${from.style?` style="${from.style}"`:""}${id&amp;&amp;!id.startsWith("acn")?` id="${id}"`:""}${from.class&amp;&amp;from.class.length>0?` class="${from.class.join(" ")}"`:""}${inline.length>0?inline:""}>${content.join("")}&lt;/${from.tag||"div"}>`;
+        }
+        return compute(false, objectedHTML);
+    },
+    /**
+     * ### External script element
+     * @param {string} script JavaScript URL
+     * @param {string?} integrity (Optional) Script integrity key
+     * @returns {string} Compiled HTML script element
+     */
+    script: (script, integrity) => {
+        return html.compile({"acn":{tag:"script",inline:integrity?{src: script, integrity, crossorigin: "anonymous"}:{src: script, crossorigin: "anonymous"}}});
+    },
+    /**
+     * ### External script loader
+     * @param {[script: string,integrity: string][]} scriptList List of JavaScript sources URLs
+     * @param {string?} path Default path to script (ex. if path is "http://example.com" then script "/index.js" will be "http://example.com/index.js")
+     * @returns {string} Compiled HTML script elements for the scriptList
+     */
+    scriptLoader: (scriptList, path) => {
+        let code = "";
+        scriptList.forEach(script => {
+            scriptname = Array.isArray(script)?script[0]:script;
+            code += html.script((path||"")+scriptname+scriptname.endsWith(".js")?scriptname:scriptname+".js", Array.isArray(script)?script[1]||false:false)
+        });
+        return code;
+    },
+    /**
+     * ### Script element
+     * @param {string} script JavaScript code
+     * @returns {string} InHTML script element with code
+     */
+    scriptElement: (script) => {
+        return `&lt;script>${script?script:""}&lt;/script>`;
+    },
+    /**
+     * ### Link element
+     * @param {string} rel Link element rel property value
+     * @param {string} href Link element href property value
+     * @param {string} type Link element type property value
+     * @param {string} title Link element title property value
+     * @returns {string} Generated link element
+     */
+    link: (rel, href, type, title) => {
+        let inline = {rel: rel?rel:"", href: href?href:""};
+        if(type) inline.type = type;
+        if(title) inline.title = title;
+        return html.void({tag: "link", inline});
+    },
+    /**
+     * ### External style element
+     * @param {string} href URL with stylesheet file
+     * @returns {string} Link to stylesheet
+     */
+    style: (href) => {
+        return html.link("stylesheet", href?href:"");
+    },
+    /**
+     * ### Style element
+     * @param {string} style InHTML stylesheet code
+     * @returns {string} Stylesheet HTML element
+     */
+    styleElement: (style) => {
+        return `&lt;style>${style?style:""}&lt;/style>`;
+    },
+    /**
+     * ### Void element generator
+     * @param {object} voidObjected Objected HTML void element data
+     * @returns {string} Compiled HTML void type element
+     */
+    void: (voidObjected) => {
+        let inline = "";
+        Object.keys(voidObjected.inline||{}).forEach(element => {
+            inline+=` ${element}="${voidObjected.inline[element]}"`;
+        });
+        return `&lt;${voidObjected.tag||"br"}${voidObjected.style?` style="${voidObjected.style}"`:""}${voidObjected.class&amp;&amp;voidObjected.class.length>0?` class="${voidObjected.class.join(" ")}"`:""}${inline.length>0?inline:""}/>`;
+    },
+    /**
+     * # Interactives Core
+     * @returns {string} Script element with Interactives Core
+     */
+    interactivesCore: () => {
+        return html.scriptElement(
+            // obfuscator.obfuscate(
+            html.jsCode(()=>{
+            let interactives = {};
+            let interactivesCore = {
+                /**
+                 * # Queue Manager
+                 * Creates Promise callbacks queue
+                 * @class QueueManager
+                 */
+                QueueManager: class QueueManager {
+                    /**
+                     * ### Queue Manager
+                     * ##### constructor
+                     * @param {function[]} queue functions queue
+                     * @memberof QueueManager
+                     */
+                    constructor(queue) {
+                        this.queue = queue;
+                    };
+                    /**
+                     * ### Queue Manager
+                     * ##### Wait then callback
+                     *
+                     * @param {number} time waiting time
+                     * @param {function} next callback function
+                     * @memberof QueueManager
+                     */
+                    wait = (time,next) => {
+                        setTimeout(() =>{next()},time)
+                    };
+                    next = () => {
+                        if(this.queue[++this.iterator]) this.queue[this.iterator](this.next, this.wait);
+                    };
+                    /**
+                     * ### Queue Manager
+                     * ##### Worker starter
+                     *
+                     * @memberof QueueManager
+                     */
+                    run = () => {
+                        this.iterator = -1;
+                        this.next();
+                    };
+                    /**
+                     * ### Queue Manager
+                     * ##### Promise worker starter
+                     *
+                     * @memberof QueueManager
+                     */
+                    promiseRun = async () => {
+                        return await new Promise((resolve,reject) =>{
+                            this.iterator = -1;
+                            let next = () => {
+                                if(this.queue[++this.iterator]) this.queue[this.iterator](next, this.wait, resolve);
+                            };
+                            next();
+                        });
+                    }
+                },
+                /**
+                 * # Thread
+                 * ### Asynchronous thread creator
+                 * @class Thread
+                 */
+                Thread: class Thread {
+                    /**
+                     * ### Thread
+                     * ##### Thread worker initialization
+                     * @param {function} worker thread worker
+                     * @memberof Thread
+                     */
+                    constructor(worker) {
+                        setTimeout(worker, 0);
+                    }
+                },
+                /**
+                 * # Combination
+                 * Combinations generator
+                 * @class Combination
+                 */
+                Combination: class Combination {
+                    /**
+                     * ### Combination
+                     * ##### All range combination generator
+                     * @param {string} from start value / **(In development)** combination config
+                     * @param {string} to end value (must be the same length as from)
+                     * @memberof Combination
+                     */
+                    constructor(from, to) {
+                        if(to){
+                            if(from.length!=to.length) throw new Error("From and to must be the same length");
+                            let combinationString = "";
+                            for (let i = 0; i &lt; from.length; i++) combinationString += `${from[i]}${to[i]},`;
+                            combinationString = combinationString.slice(0, -1);
+                            this.combinations = interactivesCore.generateCombinations(combinationString);
+                        } else if (from) {
+                            this.combinations = [];
+                            let temp = [];
+                            let i = 0;
+                            from.split('||').forEach(t=>{
+                                if(i%2==1) t = t.split('-');
+                                else temp.push(t);
+                                i++;
+                            });
+                            for (let i = parseInt(t[1][0].slice(1)); (parseInt(t[1][0].slice(1))>parseInt(t[1][1])&amp;&amp;i>parseInt(t[1][1]))||(parseInt(t[1][0].slice(1))&lt;parseInt(t[1][1])&amp;&amp;i&lt;parseInt(t[1][1])); i+=parseInt(t[1][0].slice(1))>parseInt(t[1][1])?-1:1) {
+                                this.combinations.push(temp[0]+t[1][0].slice(0,1).toLowerCase()=="h"?i.toString(16):i+temp[1]);
+                            }
+                        }
+                        return this.combinations;
+                    }
+                    /**
+                     * ### Combination
+                     * ##### Range hexadecimal generator
+                     *
+                     * @param {string} before Text before number
+                     * @param {number} from Range start
+                     * @param {number} to Range end
+                     * @param {number} width Length of hex (ex. if you want #fff you must set this to 3)
+                     * @param {string} after Text after number
+                     * @return {string[]} All hex combinations in range
+                     * @memberof Combination
+                     */
+                    hex(before, from, to, width, after) {
+                        width = width || 6;
+                        let base = "";
+                        for(let i = 0; i &lt; width; i++) base += "0";
+                        let res = [];
+                        if(from&lt;to) for(let i = from; i &lt;= to; i++) res.push((before||"")+(base+(Number(i).toString(16))).slice(-width).toUpperCase()+(after||""));
+                        else for(let i = from; i >= to; i--) res.push((before||"")+(base+(Number(i).toString(16))).slice(-width).toUpperCase()+(after||""));
+                        return res;
+                    }
+                    /**
+                     * ### Combination
+                     * ##### Range decimal numbers generator
+                     *
+                     * @param {string} before Text before number
+                     * @param {number} from Range start
+                     * @param {number} to Range end
+                     * @param {number} accuracy How many floating point numbers should be incremented by one step (ex. 1 -> 0.1,0.2,0.3,0.4,0.5; 0 -> 1,2,3,4,5)
+                     * @param {string} after Text after number
+                     * @return {string[]} All dec combinations in range
+                     * @memberof Combination
+                     */
+                    number(before, from, to, accuracy, after) {
+                        accuracy = accuracy || 0;
+                        let accuracynumber = accuracy>0?Math.pow(10, accuracy):1;
+                        let res = [];
+                        if(from&lt;to) for(let i = from * accuracynumber; i &lt;= to * accuracynumber; i++) res.push((before||"")+i/accuracynumber+(after||""));
+                        else for(let i = from * accuracynumber; i >= to * accuracynumber; i--) res.push((before||"")+i/accuracynumber+(after||""));
+                        return res;
+                    }
+                },
+                animate: (component, property, sequences, wait, callback) => {
+                    wait = wait || 10;
+                    for (let i = 0; i &lt; sequences.length; i++) {
+                        setTimeout(() => {
+                            component.style[property] = sequences[i];
+                            if(i==sequences.length-1&amp;&amp;callback) callback();
+                        }, i*wait);
+                    }
+                    return sequences.length*wait;
+                },
+                generateCombinations: (combinationConfig, nonAI) => {
+                    nonAI = nonAI || false;
+                    let charmap = [
+                        "","_","=","`","~","!","@","#","$","%","^","&amp;","*","(",")","[","]","{","}","\\","|",";",":","'","\"",",",".","&lt;",">","/","?","+","-"," ",
+                        "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+                        "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+                    ];
+                    let result = [""];
+                    let resultid = 0;
+                    combinationConfig = combinationConfig.split(',');
+                    let chars = (charnumcopy) => {
+                        let charnum = (charnumcopy==null) ? -1 : charnumcopy;
+                        ++charnum;
+                        let range = [charmap.indexOf(combinationConfig[charnum][0]), charmap.indexOf(combinationConfig[charnum][1])];
+                        for (let charmapid = range[0]; (range[0]>range[1]&amp;&amp;charmapid>=range[1])||(range[0]&lt;=range[1]&amp;&amp;charmapid&lt;=range[1]);) {
+                            result[resultid] = result[resultid].slice(0,charnum) + charmap[charmapid];
+                            if(charnum==combinationConfig.length-1) result[++resultid] = result[resultid-1];
+                            else chars(charnum);
+                            if(range[0]>range[1]) --charmapid; else ++charmapid;
+                        }
+                        result[resultid+1] = null;
+                        result = result.filter(res=>res!=null);
+                        return result;
+                    }
+                    return chars();
+                }
+            };
+        })
+        // , {
+        //     compact: true,
+        //     controlFlowFlattening: false,
+        //     controlFlowFlatteningThreshold: 0.75,
+        //     deadCodeInjection: true,
+        //     deadCodeInjectionThreshold: 0.4,
+        //     debugProtection: false,//true,
+        //     debugProtectionInterval: false,//true,
+        //     disableConsoleOutput: false,
+        //     domainLock: data.config().server.qualifiedURLs,
+        //     domainLockRedirectUrl: 'about:blank',//`data:text/html,&lt;head>&lt;link rel="preconnect" href="https://fonts.googleapis.com"> &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> &lt;link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&amp;display=swap" rel="stylesheet">&lt;/head>&lt;body style="background: rgb(138,144,0); background: linear-gradient(90deg, rgba(138,144,0,1) 17%, rgba(0,140,14,1) 59%, rgba(0,114,142,1) 100%); text-align: center; color: white; font-size: 15vw; text-shadow: 1vh 1vh black; font-family: 'Open Sans', sans-serif;">&lt;div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw;">Don't steal&lt;/div>&lt;/body>`,
+        //     forceTransformStrings: [],
+        //     identifierNamesCache: null,
+        //     identifierNamesGenerator: 'hexadecimal',
+        //     identifiersDictionary: [],
+        //     identifiersPrefix: '',
+        //     ignoreRequireImports: false,
+        //     log: true,
+        //     numbersToExpressions: true,
+        //     optionsPreset: 'medium-obfuscation',
+        //     renameGlobals: false,
+        //     renameProperties: false,
+        //     renamePropertiesMode: 'safe',
+        //     reservedNames: ["^i","^interactives","^interactivesCore","^QueueManager","^Thread","^Combination","^animate","^generateCombinations"],
+        //     reservedStrings: [],
+        //     rotateStringArray: true,
+        //     seed: 213769420,
+        //     selfDefending: true,
+        //     shuffleStringArray: true,
+        //     simplify: true,
+        //     sourceMap: false,
+        //     sourceMapBaseUrl: '',
+        //     sourceMapFileName: '',
+        //     sourceMapMode: 'separate',
+        //     splitStrings: true,
+        //     splitStringsChunkLength: 20,
+        //     stringArray: true,
+        //     stringArrayIndexesType: [
+        //         'hexadecimal-number'
+        //     ],
+        //     stringArrayEncoding: ["base64","rc4"],
+        //     stringArrayIndexShift: true,
+        //     stringArrayWrappersCount: 1,
+        //     stringArrayWrappersChainedCalls: true,
+        //     stringArrayWrappersParametersMaxCount: 2,
+        //     stringArrayWrappersType: 'variable',
+        //     stringArrayThreshold: 0.75,
+        //     target: 'browser',
+        //     transformObjectKeys: true,
+        //     unicodeEscapeSequence: true
+        // })
+        );
+    },
+    /**
+     * # InteractiveComponent  
+     *   
+     * Generates interactive component to include into **Raptor** HTML compiler.  
+     * 
+     * @class InteractiveComponent
+     */
+    InteractiveComponent: class InteractiveComponent {
+        /**
+         * ### InteractiveComponent  
+         * #### constructor
+         * @param {object} component Objected HTML component
+         * @memberof InteractiveComponent
+         */
+        constructor(component) {
+            if(typeof component != 'object') throw new Error("Component must be an object");
+            component.interactive = html.scriptElement(html.jsCode(()=>{
+                interactives["%%component.id%%"] = {
+                    component: document.getElementById("%%component.id%%"),
+                    addAnimation: (property, sequences, wait, callback) => {return interactivesCore.animate(interactives["%%component.id%%"].component, property, sequences, wait, callback)}
+                };
+            }, {
+                // component: {id: Object.keys(component)[0]}
+            })).replace(/"%%component.id%%"/g, `"${Object.keys(component)[0]}"`);
+            this.code =  html.compile(component);
+        }
+        /**
+         * ### InteractiveComponent  
+         * #### get  
+         *   
+         * @return {string} Stringified HTML interactive component 
+         * @memberof InteractiveComponent
+         */
+        get() {
+            return this.code;
+        }
+    },
+    jsCode: (codeInFunction, variables) => {
+        let variablesString = "";
+        Object.keys(variables||{}).forEach(variable => {
+            variablesString += `let ${variable} = ${JSON.stringify(variables[variable])};\n`;
+        });
+        return `${variablesString}${codeInFunction.toString().split("\n").slice(1,-1).join("\n")}`;
+    }
+};
+
+module.exports = html;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      
+    </footer>
+
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"Combination","link":"<a href=\"Combination.html\">Combination</a>"},{"title":"Combination.hex","link":"<a href=\"Combination.html#.hex\">Combination.hex &rtrif; undefined</a>"},{"title":"Combination.number","link":"<a href=\"Combination.html#.number\">Combination.number &rtrif; undefined</a>"},{"title":"InteractiveComponent","link":"<a href=\"InteractiveComponent.html\">InteractiveComponent</a>"},{"title":"InteractiveComponent.get","link":"<a href=\"InteractiveComponent.html#.get\">InteractiveComponent.get &rtrif; undefined</a>"},{"title":"QueueManager","link":"<a href=\"QueueManager.html\">QueueManager</a>"},{"title":"Thread","link":"<a href=\"Thread.html\">Thread</a>"},{"title":"copy","link":"<a href=\"global.html#copy\">copy</a>"},{"title":"e","link":"<a href=\"global.html#e\">e</a>"},{"title":"getAccordionIdsFromLocalStorage","link":"<a href=\"global.html#getAccordionIdsFromLocalStorage\">getAccordionIdsFromLocalStorage</a>"},{"title":"init","link":"<a href=\"global.html#init\">init</a>"},{"title":"line","link":"<a href=\"global.html#line\">line</a>"},{"title":"log","link":"<a href=\"global.html#log\">log</a>"},{"title":"removeAccordionIdFromLocalStorage","link":"<a href=\"global.html#removeAccordionIdFromLocalStorage\">removeAccordionIdFromLocalStorage</a>"},{"title":"setAccordionIdToLocalStorage","link":"<a href=\"global.html#setAccordionIdToLocalStorage\">setAccordionIdToLocalStorage</a>"},{"title":"toggleNavbar","link":"<a href=\"global.html#toggleNavbar\">toggleNavbar</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
+
+    
+
+    
+
+    
+
+    
+
+
+  </body>
+
+</html>

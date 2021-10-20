@@ -1,0 +1,4 @@
+{
+    "test//": "Don't touch this property, this property is for automated tests and removing it causes fails!",
+    "test": "test passed"
+}

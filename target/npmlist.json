@@ -1,0 +1,1 @@
+{"version":"0.0.0","name":"afilidia-engine","dependencies":{"cookie-parser":{"version":"1.4.5"},"debug":{"version":"4.3.1"},"ejs":{"version":"3.1.6"},"express":{"version":"4.17.1"},"http-errors":{"version":"1.8.0"},"less-middleware":{"version":"3.1.0"},"mocha":{"version":"9.0.1"},"morgan":{"version":"1.10.0"}}}
