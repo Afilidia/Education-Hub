@@ -1,7 +1,7 @@
 const express = require('express')
 , router = express.Router()
 
-, framework = require('./framework')
+, framework = require('../framework')
 
 , dotenv = require("dotenv")
 , mysql = require("mysql")
