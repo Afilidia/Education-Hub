@@ -1,8 +1,11 @@
 const express = require('express')
 , router = express.Router()
 
+, framework = require('./framework')
+
 , dotenv = require("dotenv")
-, mysql = require("mysql");
+, mysql = require("mysql")
+, fs = require("fs");
 
 dotenv.config();
 
@@ -21,7 +24,7 @@ const crypto = require('crypto')
 try {
   connection.connect();
 } catch (err) {
-  console.log(err);
+  framework.log(0, err);
   process.exit();
 }
 
@@ -38,7 +41,7 @@ let tokens = {}
     tokens = require("../cookies.json");
     main();
   } catch (error) {
-    console.log("$(fg-red)Error in JSON file! Trying to restore last working version...");
+    framework.log(0, "$(fg-red)Error in JSON file! Trying to restore last working version...");
     fs.mkdir("./recovery/",
     { recursive: true }, (err) => {
       if (!err) {
@@ -54,7 +57,7 @@ let tokens = {}
       }
     });
     fs.readFile('./cookies-lastsave-backup.json', 'utf8', function (err, data) {
-      console.log("$(fg-cyan)Checking last save backup");
+      framework.log(0, "$(fg-cyan)Checking last save backup");
       let parsingFail = false;
       try {
         if(!err) JSON.parse(data);
@@ -62,9 +65,9 @@ let tokens = {}
         parsingFail = true;
       }
       if (err||parsingFail) {
-        console.log("$(fg-red)This save is incorrect");
+        framework.log(0, "$(fg-red)This save is incorrect");
         fs.readFile('./cookies-start-backup.json', 'utf8', function (err, data) {
-          console.log("$(fg-cyan)Checking last start backup"); 
+          framework.log(0, "$(fg-cyan)Checking last start backup"); 
           let parsingFail = false;
           try {
             if(!err) JSON.parse(data);
@@ -72,22 +75,22 @@ let tokens = {}
             parsingFail = true;
           }
           if (err||parsingFail) {
-            console.log("$(bg-red)System backup saves are incorrect, starting with clear saves.");
+            framework.log(0, "$(bg-red)System backup saves are incorrect, starting with clear saves.");
             fs.writeFileSync('./cookies.json', JSON.stringify({}));
             main();
           } else {
-            console.log("$(fg-green)Restoring data from last start backup");
+            framework.log(0, "$(fg-green)Restoring data from last start backup");
             fs.writeFileSync('./cookies.json', JSON.stringify(require("../cookies-start-backup.json")));
             tokens = require("../cookies.json");
-            console.log("$(fg-green)$(gb-bright)Success, starting!");
+            framework.log(0, "$(fg-green)$(gb-bright)Success, starting!");
             main();
           }
         })
       } else {
-        console.log("$(fg-green)Restoring data from last save backup");
+        framework.log(0, "$(fg-green)Restoring data from last save backup");
         fs.writeFileSync('./cookies.json', JSON.stringify(require("../cookies-lastsave-backup.json")));
         tokens = require("../cookies.json");
-        console.log("$(fg-green)$(gb-bright)Success, starting!");
+        framework.log(0, "$(fg-green)$(gb-bright)Success, starting!");
         main();
       }
     })
