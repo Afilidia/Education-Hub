@@ -169,7 +169,7 @@ router.post('/register', async (req, res, next) => {
   password = encrypt(password);
 
   let q2 = await query(`INSERT INTO users (login, password) VALUES (${mysql.escape(login)}, ${mysql.escape(password)})`);
-  if(q2&&q2.length == 1) {
+  if(q2&&q2.length>0) {
       let r;
       do {
           r = getRandomString(40);
