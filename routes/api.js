@@ -134,7 +134,7 @@ loadSave();
 
 router.post('/todo/create', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly) return res.redirect('/login');
+  if(!apiLoggedOnly) return res.json({error: "login"});
 
   let task = req.body.task||false;
   if(!task) return res.redirect('/todo');
@@ -144,14 +144,14 @@ router.post('/todo/create', async (req, res, next) => {
 });
 router.post('/todo/read', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly) return res.redirect('/login');
+  if(!apiLoggedOnly) return res.json({error: "login"});
 
   let q = await query(`SELECT * FROM todo WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND removed = false`);
   res.json(q);
 });
 router.post('/todo/update', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly) return res.redirect('/login');
+  if(!apiLoggedOnly) return res.json({error: "login"});
   
   let done = req.body.done||false;
   let task = req.body.task||false;
@@ -163,7 +163,7 @@ router.post('/todo/update', async (req, res, next) => {
 });
 router.post('/todo/delete', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly) return res.redirect('/login');
+  if(!apiLoggedOnly) return res.json({error: "login"});
   
   let id = req.body.id||false;
   if(!id) return res.redirect('/todo');
@@ -191,6 +191,14 @@ router.post('/login', async (req, res, next) => {
   } else {
       res.redirect("/login?error=1");
   }
+});
+
+router.post('/logout', async (req, res, next) => {
+  if(req.cookies.token) {
+      delete tokens[req.cookies.token];
+      res.clearCookie('token');
+  }
+  res.redirect('/login');
 });
 
 router.post('/register', async (req, res, next) => {
