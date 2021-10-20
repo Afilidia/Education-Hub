@@ -1,6 +1,8 @@
 const express = require('express')
 , router = express.Router()
 
+, process = require('process')
+
 , crypto = require('crypto')
 , algorithm = 'aes-256-ctr'
 , secretKey = process.env.ENCRYPT_KEY
