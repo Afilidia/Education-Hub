@@ -1,0 +1,1 @@
+"use strict";$(document).ready(function(t){AOS.init();let e=document.querySelector(".illustrations");e&&setTimeout(()=>{e.classList.remove("intro")},2e3)});
