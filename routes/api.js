@@ -164,8 +164,10 @@ router.post('/register', async (req, res, next) => {
   if(login.length < 3 || password.length < 8) return res.redirect('/register?error=1');
   
   let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)}`);
-  if (q && q.length > 0) return res.redirect('/register?error=1');
-
+  if (q && q.length > 0) {
+    console.log(0,q);
+    return res.redirect('/register?error=1');
+  }
   password = encrypt(password);
 
   let q2 = await query(`INSERT INTO users (login, password) VALUES (${mysql.escape(login)}, ${mysql.escape(password)})`);
@@ -178,7 +180,8 @@ router.post('/register', async (req, res, next) => {
       res.cookie('token', r);
       res.redirect("/app");
   } else {
-      res.redirect('/register?error=1');
+    console.log(1,q2);
+    res.redirect('/register?error=1');
   }
 });
 
