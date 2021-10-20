@@ -168,7 +168,7 @@ router.post('/todo/delete', async (req, res, next) => {
   let id = req.body.id||false;
   if(!id) return res.redirect('/todo');
 
-  let q = await query(`DELETE FROM todo WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND removed = false AND id = ${mysql.escape(id)}`);
+  let q = await query(`UPDATE todo SET removed = true WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND removed = false AND id = ${mysql.escape(id)}`);
   res.json(q);
 });
 
