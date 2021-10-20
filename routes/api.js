@@ -9,10 +9,9 @@ const express = require('express')
 
 dotenv.config();
 
-const crypto = require('crypto')
-, algorithm = 'aes-256-ctr'
+const CryptoJS = require("crypto-js")
 , secretKey = process.env.ENCRYPT_KEY
-, cipher = crypto.createCipheriv(algorithm, secretKey, crypto.randomBytes(16))
+, encrypt = (pass) => {return CryptoJS.AES(pass, secretKey);}
 
 , connection = mysql.createConnection({
   host     : process.env.HOST,
@@ -139,7 +138,7 @@ router.post('/login', async (req, res, next) => {
   let password = req.body.password||false;
   if(!password) return res.redirect('/');
 
-  password = Buffer.concat([cipher.update(password), cipher.final()]);
+  password = encrypt(password);
 
   let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)} AND password=${mysql.escape(password)}`);
   if(q&&q.length == 1) {
@@ -167,7 +166,7 @@ router.post('/register', async (req, res, next) => {
   let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)}`);
   if (q && q.length > 0) return res.redirect('/register?error=1');
 
-  password = Buffer.concat([cipher.update(password), cipher.final()]);
+  password = encrypt(password);
 
   let q2 = await query(`INSERT INTO users (login, password) VALUES (${mysql.escape(login)}, ${mysql.escape(password)})`);
   if(q2&&q2.length == 1) {
