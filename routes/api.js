@@ -1,9 +1,11 @@
 const express = require('express')
 , router = express.Router()
 
-, process = require('process')
+, dotenv = require("dotenv");
 
-, crypto = require('crypto')
+dotenv.config();
+
+const crypto = require('crypto')
 , algorithm = 'aes-256-ctr'
 , secretKey = process.env.ENCRYPT_KEY
 , cipher = crypto.createCipheriv(algorithm, secretKey, crypto.randomBytes(16))
