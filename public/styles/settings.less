@@ -1,0 +1,118 @@
+// * COLOR PALETTE * //
+
+// MAIN
+@light-blue: #69DADB;
+@blue: #1597E5;
+@medium-blue: #113CFC;
+@dark-blue: #193498;
+@dark-purple: #2C2891;
+
+// SIDE
+@light-red: #e74c3c;
+@dark-red: #c0392b;
+
+@gray: #cacaca;
+
+
+// * Font weights * //
+@light: 300;
+@regular: 400;
+@medium: 500;
+@semi-bold: 600;
+@bold: 700;
+@extra-bold: 800;
+@black: 900;
+
+@keyframes fade {
+    0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+// * BUTTONS * //
+.btn {
+    padding: 12px 35px;
+    border-radius: 15px;
+    background-color: @medium-blue;
+    color: #fff;
+    text-decoration: none;
+    transition: 150ms all ease;
+
+    &.gradient-btn {
+        background-image: linear-gradient(to right, @dark-blue, @medium-blue) !important;
+
+        &:hover {
+            background-size: 400% 400%;
+            animation: fade 1s linear infinite;
+        }
+    }
+
+    &:active {
+        transform: scale(.95);
+    }
+}
+
+
+// * OTHER * //
+.wave {
+    position: absolute;
+    .noselect();
+}
+
+
+// * Icon sizes
+.icon16 {
+    width: 16px;
+    height: 16px;
+}
+
+.icon20 {
+    width: 20px;
+    height: 20px;
+}
+
+.icon24 {
+    width: 24px;
+    height: 24px;
+}
+
+.icon32 {
+    width: 32px;
+    height: 32px;
+}
+
+.icon48 {
+    width: 48px;
+    height: 48px;
+}
+
+.icon64 {
+    width: 64px;
+    height: 64px;
+}
+
+.icon128 {
+    width: 128px;
+    height: 128px;
+}
+
+
+// * Functions
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Edge, Opera and Firefox */
+}
