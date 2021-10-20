@@ -12,6 +12,7 @@ dotenv.config();
 const CryptoJS = require("crypto-js")
 , secretKey = process.env.ENCRYPT_KEY
 , encrypt = (pass) => {return CryptoJS.AES.encrypt(pass, secretKey).toString();}
+, decrypt = (pass) => {return CryptoJS.AES.decrypt(pass, secretKey).toString(CryptoJS.enc.Utf8);}
 
 , connection = mysql.createConnection({
   host     : process.env.HOST,
@@ -138,10 +139,8 @@ router.post('/login', async (req, res, next) => {
   let password = req.body.password||false;
   if(!password) return res.redirect('/');
 
-  password = encrypt(password);
-
-  let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)} AND password=${mysql.escape(password)}`);
-  if(q&&q.length>0) {
+  let q = await query(`SELECT * FROM users WHERE login=${mysql.escape(login)}`);
+  if(q&&q.length>0&&password == decrypt(q[0].password)) {
       let r;
       do {
           r = getRandomString(40);
