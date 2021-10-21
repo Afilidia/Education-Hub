@@ -174,11 +174,13 @@ $(document).ready(async function () {
     }
 
     function generateTiles(tasks) {
-        if (tasks) tasks.forEach(task => {
-            var tile = getTile(task);
+        if (tasks) {
             list.innerHTML = '';
-            list.insertAdjacentHTML('afterbegin', tile);
-        });
+            tasks.forEach(task => {
+                var tile = getTile(task);
+                list.insertAdjacentHTML('afterbegin', tile);
+            });
+        }
     }
 
     function filtered(tasks, filter) {
