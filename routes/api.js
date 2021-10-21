@@ -226,7 +226,7 @@ router.post('/register', async (req, res, next) => {
       do {
           r = getRandomString(40);
       } while(tokens[r]);
-      let data = q[0];
+      let data = q2[0];
       data.password = "";
       data = JSON.stringify(data);
       tokens[r] = {user: q2[0].id, data, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
