@@ -14,24 +14,16 @@ $(document).ready(async function () {
     };
 
     var filters = document.querySelectorAll('input[type="checkbox"]');
-    if (filters && tasks) filters.forEach(filter => {
+    if (filters) filters.forEach(filter => {
         filter.addEventListener('click', (e) => {
             filter_settings[(filter.getAttribute('name').split('-'))[1]] = filter.checked;
-            list.innerHTML = '';
 
-            if (filter_settings.done) {
-                generateTiles(filtered(tasks, 'done'));
+            console.log(filter_settings);
 
-            } else {
-                generateTiles(tasks);
-            }
-
-            if (filter_settings.pending) {
-                generateTiles(filtered(tasks, 'pending'));
-
-            } else {
-                generateTiles(tasks);
-            }
+            if (filter_settings.done && filter_settings.pending)        generateTiles(tasks);
+            else if (filter_settings.done && !filter_settings.pending)  generateTiles(filtered(tasks, 'done'));
+            else if (!filter_settings.done && filter_settings.pending)  generateTiles(filtered(tasks, 'pending'));
+            else                                                        list.innerHTML = '';
         });
     });
 
@@ -129,7 +121,9 @@ $(document).ready(async function () {
                             return Promise.reject(response);
 
                         }).then(function (data) {
-                            console.log('SUCCESS');
+
+                            // * Pop out task from tasks
+                            tasks.splice(tasks.indexOf(task), 1);
 
                         }).catch(function (error) {
                             console.warn('Something went wrong.', error);
@@ -182,7 +176,7 @@ $(document).ready(async function () {
 
     function generateTiles(tasks) {
         list.innerHTML = '';
-
+        console.log(tasks);
         if (tasks) tasks.forEach(task => {
             var tile = getTile(task);
             list.insertAdjacentHTML('afterbegin', tile);
@@ -194,11 +188,19 @@ $(document).ready(async function () {
 
         tasks.forEach(task => {
 
-            if ((filter == 'done') && (task.done == true)) data.push(task);
-            else data.push(task);
+            if (filter == 'done') {
+                if (task.done == 1) {
+                    data.push(task);
+                }
 
-            return data;
+            } else {
+                if (task.done != 1) {
+                    data.push(task);
+                }
+            }
         });
+        
+        return data;
     }
 
     function getTile(data) {
