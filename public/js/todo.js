@@ -14,7 +14,7 @@ $(document).ready(async function () {
     };
 
     var filters = document.querySelectorAll('input[type="checkbox"]');
-    if (filters) filters.forEach(filter => {
+    if (filters && tasks) filters.forEach(filter => {
         filter.addEventListener('click', (e) => {
             filter_settings[(filter.getAttribute('name').split('-'))[1]] = filter.checked;
 
@@ -175,8 +175,8 @@ $(document).ready(async function () {
     }
 
     function generateTiles(tasks) {
-        list.innerHTML = '';
-        console.log(tasks);
+        // list.innerHTML = '';
+
         if (tasks) tasks.forEach(task => {
             var tile = getTile(task);
             list.insertAdjacentHTML('afterbegin', tile);
@@ -199,7 +199,7 @@ $(document).ready(async function () {
                 }
             }
         });
-        
+
         return data;
     }
 

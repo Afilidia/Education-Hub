@@ -7,6 +7,8 @@
 const _TOKEN_COOKIE = 'token';
 const _DATA_COOKIE = 'data';
 
+const _LOCAL_SUM_HISTORY = '_sum_history';
+
 // * Endpoints * //
 const ENDPOINTS = {
     todo: {

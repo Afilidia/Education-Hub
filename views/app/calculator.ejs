@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="/styles/todo.css">
+    <link rel="stylesheet" href="/styles/calculator.css">
     <link rel="stylesheet" href="/styles/components.css">
 
 
@@ -19,26 +19,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <title>Education hub | TODO list</title>
+    <title>Education hub | Calculator</title>
 </head>
 <body>
-
-    <div class="task-update-modal" id="modal">
-
-        <div class="modal">
-            <form id="update-form">
-                <div class="input-wrapper">
-                    <textarea name="task" id="task-text" class="input text-inp" placeholder=" " required></textarea>
-                    <label for="input">Type updated task text</label>
-                </div>
-
-                <div class="update-buttons">
-                    <button class="btn gradient-btn red" type="reset" id="cancel">Cancel</button>
-                    <button class="btn gradient-btn" type="submit">Edit</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- NAV BAR -->
     <nav id="navigation">
@@ -69,58 +52,30 @@
             <img src="/resources/icons/arrow-up.png" class="icon32" alt="Comeback">
         </a>
 
-        <div class="box list">
-            <!-- <div class="task" data-id="1">
-                <div class="wrapper">
-                    <div class="dot"></div>
+        <div class="calculator-wrapper">
+            <div class="calculator">
+                <div class="screen">
+                  <input type="text" class="screen small" disabled="true"><br>
+                  <input type="text" class="screen big" disabled="true"><br>
                 </div>
 
-                <div class="text-content">
-                    <p class="text">This is my first task</p>
+                <div class="keyboard">
+                  <row><button onclick="action(this);">7</button><button onclick="action(this);">8</button><button onclick="action(this);">9</button><button onclick="action(this);">/</button></row>
+                  <row><button onclick="action(this);">4</button><button onclick="action(this);">5</button><button onclick="action(this);">6</button><button onclick="action(this);">*</button></row>
+                  <row><button onclick="action(this);">1</button><button onclick="action(this);">2</button><button onclick="action(this);">3</button><button onclick="action(this);">-</button></row>
+                  <row><button onclick="action(this);">-+</button><button onclick="action(this);">0</button><button onclick="action(this);">.</button><button onclick="action(this);">+</button></row>
+                  <row><button onclick="action(this);">C</button><button onclick="action(this);" class="col2">=</button><button onclick="action(this);">**</button></row>
                 </div>
-
-                <div class="buttons">
-                    <button class="task-btn done" data-type="done">
-                        <img src="/resources/icons/buttons/done.png" alt="Done" class="icon16">
-                    </button>
-
-                    <button class="task-btn delete" data-type="delete">
-                        <img src="/resources/icons/buttons/close.png" alt="Delete" class="icon16">
-                    </button>
-
-                    <button class="task-btn update" data-type="update">
-                        <img src="/resources/icons/buttons/edit.png" alt="Edit" class="icon16">
-                    </button>
-                </div>
-            </div> -->
+            </div>
         </div>
 
-        <div class="box settings">
-            <span class="header">TODO list</span>
+        <div class="history-wrapper">
+            <span class="header">History <button id="clear" class="btn">Clear</button></span>
 
-            <div class="box add-box">
-                <span class="header box-header">Add a task</span>
-
-                <form action="/api/todo/create" method="POST" id="add-task">
-                    <div class="input-wrapper">
-                        <input type="text" name="task" id="add-task" class="input text-inp" placeholder="Win the code jam">
-                        <label for="input">Add your task</label>
-                    </div>
-
-                    <button type="submit" class="btn">Add</button>
-                </form>
-            </div>
-
-            <div class="box filter-box">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" name="filter-done" id="filter-done">
-                    <label for="filter-done">Done tasks</label>
-                </div>
-
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" name="filter-pending" id="filter-pending">
-                    <label for="filter-pending">Pending tasks</label>
-                </div>
+            <div class="results-wrapper">
+                <!-- <div class="result">
+                    <span class="text">0.00</span>
+                </div> -->
             </div>
         </div>
     </section>
@@ -174,7 +129,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="/js/config.js"></script>
     <script src="/js/animations.js"></script>
-    <script src="/js/todo.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/calculator.js"></script>
 </body>
 </html>

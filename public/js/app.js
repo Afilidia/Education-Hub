@@ -14,7 +14,7 @@ $(document).ready(async function () {
     }
 
     if (latestTask) {
-        var tasks = getTasks();
+        var tasks = await getTasks();
         let latest = getLatestTask(tasks);
         latestTask.textContent = latest.task;
     }

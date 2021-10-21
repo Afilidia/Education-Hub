@@ -1,50 +1,5 @@
 @import 'settings';
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Rubik', sans-serif;
-}
-
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    overflow-x: hidden;
-    background-color: @gray;
-    background: linear-gradient(50deg, #fff 80%, @gray);
-    width: 100vw;
-    height: 150vh;
-
-    @media screen and (max-width: 1000px) {
-        height: 200vh;
-    }
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: @blue;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    transition: 200ms all ease-out;
-    background: @medium-blue;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: @dark-blue;
-}
-
 .task-update-modal {
     position: fixed;
     width: 100vw;
@@ -171,7 +126,7 @@ section {
                 overflow-y: auto;
                 display: grid;
                 grid-template-columns: 2fr 2fr;
-                grid-template-rows: 150px 150px;
+                grid-template-rows: repeat(auto-fill, 150px);
                 grid-column-gap: 20px;
                 grid-row-gap: 20px;
                 justify-items: stretch;

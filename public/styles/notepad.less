@@ -1,0 +1,162 @@
+@import 'settings';
+
+section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 2;
+
+    &.section-1 {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        padding-top: 5%;
+
+        .box {
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            &.workspace {
+                height: 80%;
+                width: 30%;
+            }
+
+            span.header {
+                font-size: 2em;
+                font-weight: @medium;
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+        .box-wrapper {
+            height: 80%;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 30px;
+
+            .box.manager {
+                height: 60%;
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 20px;
+                padding: 1rem;
+
+                .options {
+                    height: 90%;
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 10px;
+                    overflow-y: auto;
+
+                    .option {
+                        border-radius: 15px;
+                        height: 60px;
+                        min-height: 60px;
+                        width: 95%;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        padding: 0 1rem;
+                        gap: 20px;
+                        transition: 300ms all ease-out;
+                        .noselect();
+
+                        * {
+                            transition: 300ms all ease-out;
+                        }
+
+                        &:last-child {
+                            &:hover {
+                                background-color: @light-red;
+                            }
+                        }
+
+                        &:hover {
+                            background-color: @medium-blue;
+                            transform: scale(.98);
+
+                            span.option-name {
+                                color: #fff;
+                            }
+
+                            img {
+                                filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(354deg) brightness(108%) contrast(101%);
+                            }
+                        }
+
+                        span.option-name {
+                            color: @medium-blue;
+                            font-weight: @medium;
+                            font-size: 1.1em;
+                        }
+                    }
+                }
+            }
+
+            .box.files {
+                height: 40%;
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 20px;
+                padding: 1rem;
+                overflow-y: auto;
+
+                .files-list {
+                    height: 90%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 5px;
+
+                    .file {
+                        width: 100%;
+                        border-radius: 5px;
+                        height: 25px;
+                        min-height: 25px;
+                        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                        .noselect();
+
+                        font-size: .9em;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0 1rem;
+
+                        color: rgba(0, 0, 0, .7);
+                        transition: 300ms all ease-out;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, .08);
+                        }
+
+                        .ext {
+                            font-weight: @medium;
+                            color: @medium-blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

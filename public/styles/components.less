@@ -1,5 +1,50 @@
 @import 'settings';
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: @gray;
+    background: linear-gradient(50deg, #fff 80%, @gray);
+    width: 100vw;
+    height: 150vh;
+
+    @media screen and (max-width: 1000px) {
+        height: 200vh;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: @blue;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    transition: 200ms all ease-out;
+    background: @medium-blue;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: @dark-blue;
+}
+
 nav#navigation {
     // background-color: #505050;
     position: absolute;
@@ -65,12 +110,14 @@ nav#navigation {
             bottom: 20%;
             left: 50%;
             opacity: 0;
+            display: none !important;
             transform: translateY(-200px);
             z-index: 3;
             transition: 300ms all cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
         .menu.slide + .buttons {
+            display: flex !important;
             opacity: 1;
             transform: translateY(0) translate(-50%, -50%) !important;
         }

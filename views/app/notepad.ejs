@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="/styles/todo.css">
+    <link rel="stylesheet" href="/styles/notepad.css">
     <link rel="stylesheet" href="/styles/components.css">
 
 
@@ -22,23 +22,6 @@
     <title>Education hub | TODO list</title>
 </head>
 <body>
-
-    <div class="task-update-modal" id="modal">
-
-        <div class="modal">
-            <form id="update-form">
-                <div class="input-wrapper">
-                    <textarea name="task" id="task-text" class="input text-inp" placeholder=" " required></textarea>
-                    <label for="input">Type updated task text</label>
-                </div>
-
-                <div class="update-buttons">
-                    <button class="btn gradient-btn red" type="reset" id="cancel">Cancel</button>
-                    <button class="btn gradient-btn" type="submit">Edit</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- NAV BAR -->
     <nav id="navigation">
@@ -69,60 +52,49 @@
             <img src="/resources/icons/arrow-up.png" class="icon32" alt="Comeback">
         </a>
 
-        <div class="box list">
-            <!-- <div class="task" data-id="1">
-                <div class="wrapper">
-                    <div class="dot"></div>
-                </div>
-
-                <div class="text-content">
-                    <p class="text">This is my first task</p>
-                </div>
-
-                <div class="buttons">
-                    <button class="task-btn done" data-type="done">
-                        <img src="/resources/icons/buttons/done.png" alt="Done" class="icon16">
-                    </button>
-
-                    <button class="task-btn delete" data-type="delete">
-                        <img src="/resources/icons/buttons/close.png" alt="Delete" class="icon16">
-                    </button>
-
-                    <button class="task-btn update" data-type="update">
-                        <img src="/resources/icons/buttons/edit.png" alt="Edit" class="icon16">
-                    </button>
-                </div>
-            </div> -->
+        <div class="box workspace">
+            <div class="topbar"></div>
         </div>
 
-        <div class="box settings">
-            <span class="header">TODO list</span>
+        <div class="box-wrapper">
+            <div class="box manager">
+                <span class="header">Options</span>
 
-            <div class="box add-box">
-                <span class="header box-header">Add a task</span>
-
-                <form action="/api/todo/create" method="POST" id="add-task">
-                    <div class="input-wrapper">
-                        <input type="text" name="task" id="add-task" class="input text-inp" placeholder="Win the code jam">
-                        <label for="input">Add your task</label>
+                <div class="options">
+                    <div class="option">
+                        <img src="/resources/icons/notepad/save.png" class="icon32" alt="Save">
+                        <span class="option-name">Save note</span>
                     </div>
 
-                    <button type="submit" class="btn">Add</button>
-                </form>
+                    <div class="option">
+                        <img src="/resources/icons/buttons/edit.png" class="icon32" alt="Save">
+                        <span class="option-name">Change filename</span>
+                    </div>
+
+                    <div class="option">
+                        <img src="/resources/icons/notepad/download.png" class="icon32" alt="Save">
+                        <span class="option-name">Download</span>
+                    </div>
+
+                    <div class="option">
+                        <img src="/resources/icons/notepad/delete.png" class="icon32" alt="Save">
+                        <span class="option-name">Remove</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="box filter-box">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" name="filter-done" id="filter-done">
-                    <label for="filter-done">Done tasks</label>
-                </div>
+            <div class="box files">
+                <span class="header">Files</span>
 
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" name="filter-pending" id="filter-pending">
-                    <label for="filter-pending">Pending tasks</label>
+                <div class="files-list">
+                    <span class="file">codejam <span class="ext">.txt</span></span>
+                    <span class="file">school <span class="ext">.txt</span></span>
+                    <span class="file">pleasehelp <span class="ext">.jd</span></span>
+
                 </div>
             </div>
         </div>
+
     </section>
 
 
@@ -174,7 +146,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="/js/config.js"></script>
     <script src="/js/animations.js"></script>
-    <script src="/js/todo.js"></script>
+    <script src="/js/notepad.js"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>
