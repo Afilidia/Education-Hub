@@ -176,7 +176,8 @@ $(document).ready(async function () {
     function generateTiles(tasks) {
         if (tasks) tasks.forEach(task => {
             var tile = getTile(task);
-            list.insertAdjacentHTML('beforebegin', tile);
+            list.innerHTML = '';
+            list.insertAdjacentHTML('afterbegin', tile);
         });
     }
 
