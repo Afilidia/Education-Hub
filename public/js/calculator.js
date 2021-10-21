@@ -24,11 +24,9 @@ function action(el) {
     } else if (el.innerText == "=" && mathac) {
         document.querySelector(".calculator > .screen").children[0].value += mathac + number;
 
-        var sum = Math.round(eval(""+document.querySelector(".calculator > .screen").children[0].value)*100000000)/100000000;
-        save_n_displaySum(sum);
-
         mathac = false;
         number = Math.round(eval(""+document.querySelector(".calculator > .screen").children[0].value)*100000000)/100000000;
+        save_n_displaySum(document.querySelector(".calculator > .screen").children[0].value+" = "+number);
         mathed = true;
 
     } else if(number && el.innerText != "=" && el.innerText != "."  && el.innerText != "C" && el.innerText != "-+"
@@ -105,6 +103,3 @@ $(document).ready(function (event) {
         }
     }
 });
-
-
-
