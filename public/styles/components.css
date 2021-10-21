@@ -9,7 +9,24 @@
     background-position: 0% 50%;
   }
 }
+img {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                        supported by Chrome, Edge, Opera and Firefox */
+}
 .btn {
+  outline: none;
+  border: none;
   padding: 12px 35px;
   border-radius: 15px;
   background-color: #113CFC;
@@ -26,6 +43,39 @@
 }
 .btn:active {
   transform: scale(0.95);
+}
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+.input-wrapper input.input {
+  position: relative;
+  margin-top: 20px;
+  outline: none;
+  background: none;
+  border: none;
+  width: 90px;
+  height: 40px;
+  border-bottom: 3px solid #193498;
+  font-size: 1.05em;
+  padding-left: 10px;
+  color: #113CFC;
+  font-weight: 600;
+  transition: 300ms all ease-out;
+}
+.input-wrapper input.input:focus {
+  width: 180px;
+}
+.input-wrapper input.input:not(:placeholder-shown) {
+  width: 180px;
+}
+.input-wrapper label {
+  color: #193498;
+  font-size: 0.7em;
+  font-weight: 800;
 }
 .wave {
   position: absolute;

@@ -1,0 +1,156 @@
+@import 'settings';
+
+body {
+    height: 150vh !important;
+}
+
+section {
+    &.section-1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width: 1300px) {
+            form#form {
+                width: 70% !important;
+                height: 60% !important;
+                padding: 1.5rem !important;
+
+                .illustration-wrapper {
+                    position: static !important;
+                    width: 1px !important;
+
+                    img {
+                        bottom: 0 !important;
+                        top: 50% !important;
+                        right: 20% !important;
+                        transform: translate(50%, -50%);
+                    }
+                }
+
+                .form-wrapper {
+                    width: 80% !important;
+
+                    span.error {
+                        width: 80vw !important;
+                        top: -2% !important;
+                    }
+
+                    span.header {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            form#form {
+                width: 100% !important;
+                border-radius: 0px !important;
+                box-shadow: none !important;
+
+                .form-wrapper {
+                    width: 90% !important;
+                }
+
+                .illustration-wrapper img {
+                    width: 40vw !important;
+                }
+            }
+        }
+
+        form#form {
+            position: relative;
+            z-index: 4;
+            width: 50%;
+            height: 50%;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 50px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            padding: 3rem;
+
+            .wrapper {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+                position: relative;
+
+                span.error {
+                    color: @light-red;
+                    font-weight: @medium;
+                    font-size: .9em;
+                    position: absolute;
+                    left: 0;
+                    top: -2%;
+                    transition: 200ms all ease-out;
+                    opacity: 0;
+                    width: 30vw;
+
+                    &.show {
+                        opacity: 1;
+                    }
+                }
+
+                span.header {
+                    width: 100%;
+                    font-size: 2.6em;
+                    color: @dark-blue;
+                    font-weight: @medium;
+                    text-align: left;
+                }
+
+                .inputs {
+                    width: 100%;
+                    height: 70%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-direction: column;
+
+                    .input-wrapper {
+                        width: 100%;
+                        align-items: flex-start;
+                    }
+
+                    button {
+                        position: absolute;
+                        left: 0;
+                        bottom: 5%;
+                    }
+                }
+
+                &.illustration-wrapper {
+
+                    img {
+                        position: absolute;
+                        width: 30vw;
+                        bottom: -10%;
+                    }
+                }
+            }
+
+            .info {
+                position: absolute;
+                left: 3rem;
+                bottom: 5%;
+                font-size: .9em;
+                color: rgba(0, 0, 0, .5);
+
+                a {
+                    text-decoration: none;
+                    color: @medium-blue;
+                    font-weight: @bold;
+                }
+            }
+        }
+    }
+}

@@ -4,6 +4,8 @@
 
 $(document).ready(function () {
 
+    AOS.init();
+
     // * Menu animations
     var menu = document.querySelector('.menu');
     var hamburger = document.querySelector('.hamburger');

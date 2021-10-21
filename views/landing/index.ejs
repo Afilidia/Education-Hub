@@ -9,8 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/components.css">
+
+
+    <link rel="icon" type="image/png" href="/favicon.ico"/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -44,7 +48,7 @@
 
 
     <section class="section-1" id="landing">
-        <div class="greeting">
+        <div class="greeting" data-aos="fade-up">
             <span class="header">Education on the next level</span>
             <a href="/app" class="btn">Get started</a>
         </div>
@@ -54,18 +58,18 @@
 
     <section class="section-2" id="about">
         <div class="rectangle">
-            <img src="/resources/illustrations/Online_education_SVG.svg" alt="Illustration" class="illustration">
+            <img src="/resources/illustrations/undraw_book_lover_mkck_2.svg" alt="Illustration" class="illustration" data-aos="fade-down">
 
             <div class="content-wrapper">
-                <span class="header">About</span>
-                <p class="description">Hub is a tool box, that helps you educate in your school. Our tools concetrated in one service saves your time and gives you the best performance while learning.</p>
+                <span class="header" data-aos="fade-left">About</span>
+                <p class="description" data-aos="fade-left" data-aos-delay="50">Hub is a tool box, that helps you educate in your school. Our tools concetrated in one service saves your time and gives you the best performance while learning.</p>
             </div>
         </div>
 
         <div class="download-wrapper">
             <div class="text-content">
-                <span class="sub-header">Feel the comfort</span>
-                <p class="sub-description">Our service is available in the internet as a website, desktop application and also, as a mobile app. Access your helping tools from anywhere and by anything! </p>
+                <span class="sub-header" data-aos="fade-right">Feel the comfort</span>
+                <p class="sub-description" data-aos="fade-right" data-aos-delay="50">Our service is available in the internet as a website, desktop application and also, as a mobile app. Access your helping tools from anywhere and by anything! </p>
             </div>
 
             <div class="bar"></div>
@@ -84,7 +88,7 @@
             <span class="header">Features</span>
 
             <div class="tiles">
-                <div class="tile">
+                <div class="tile" data-aos="fade-up">
                     <img src="/resources/icons/features/calculator.png" alt="Calculator" class="feature-icon icon64">
 
                     <div class="text-wrapper">
@@ -95,7 +99,7 @@
                     <a href="#" class="feature-link"><img src="/resources/icons/arrow-right.png" alt="Arrow" class="icon48 arrow-right-icon"></a>
                 </div>
 
-                <div class="tile">
+                <div class="tile" data-aos="fade-up" data-aos-delay="50">
                     <img src="/resources/icons/features/todo.png" alt="Calculator" class="feature-icon icon64">
 
                     <div class="text-wrapper">
@@ -106,7 +110,7 @@
                     <a href="#" class="feature-link"><img src="/resources/icons/arrow-right.png" alt="Arrow" class="icon48 arrow-right-icon"></a>
                 </div>
 
-                <div class="tile">
+                <div class="tile" data-aos="fade-up" data-aos-delay="150">
                     <img src="/resources/icons/features/notepad.png" alt="Calculator" class="feature-icon icon64">
 
                     <div class="text-wrapper">
@@ -169,6 +173,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="/js/animations.js"></script>
 </body>
 </html>

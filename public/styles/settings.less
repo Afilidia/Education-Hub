@@ -37,9 +37,14 @@
 	}
 }
 
+img {.noselect();}
+
 
 // * BUTTONS * //
 .btn {
+    outline: none;
+    border: none;
+
     padding: 12px 35px;
     border-radius: 15px;
     background-color: @medium-blue;
@@ -58,6 +63,48 @@
 
     &:active {
         transform: scale(.95);
+    }
+}
+
+// * INPUTS * //
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    input.input {
+        position: relative;
+        margin-top: 20px;
+
+        outline: none;
+        background: none;
+        border: none;
+
+        width: 90px;
+        height: 40px;
+        border-bottom: 3px solid @dark-blue;
+        font-size: 1.05em;
+        padding-left: 10px;
+        color: @medium-blue;
+        font-weight: 600;
+
+        transition: 300ms all ease-out;
+
+        &:focus {
+            width: 180px;
+        }
+
+        &:not(:placeholder-shown) {
+            width: 180px;
+        }
+    }
+
+    label {
+        color: @dark-blue;
+        font-size: .7em;
+        font-weight: 800;
     }
 }
 
