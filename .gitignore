@@ -2,6 +2,7 @@ package-lock.json
 cookies.json
 public/styles/*.css
 EducationHUB.code-workspace
+public/downloads/builds/*
 
 # Logs
 logs
