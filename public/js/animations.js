@@ -12,12 +12,19 @@ $(document).ready(function () {
 
     var navbar = document.getElementById('navigation');
 
+    var panelSwitcher = document.querySelector('.switcher');
+    var panel = document.querySelector('.panel');
+
     if (menu && hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menu.classList.toggle('slide');
         });
     }
+
+    if (panelSwitcher && panel) panelSwitcher.addEventListener('click', () => {
+        panel.classList.toggle('move');
+    });
 
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('sticky', window.scrollY > 0);

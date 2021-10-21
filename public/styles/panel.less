@@ -55,6 +55,66 @@ section {
         flex-direction: column;
         gap: 20px;
 
+        @media screen and (max-width: 1250px) {
+            .tiles {
+                gap: 10px !important;
+            }
+
+            .tile {
+                .tile-name {
+                    .name {
+                        font-size: 2em !important;
+                    }
+
+                    img {
+                        .icon32();
+                    }
+
+                    gap: 10px !important;
+                }
+
+                .soon {
+                    font-size: .8em;
+                }
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .tiles {
+                grid-template-columns: 1fr 1fr !important;
+                grid-template-rows: 1fr 1fr 1fr !important;
+            }
+
+        }
+
+        @media screen and (max-width: 900px) {
+            .panel, .tiles {
+                width: 95% !important;
+            }
+
+            .tiles {
+                grid-template-columns: 1fr !important;
+                grid-template-rows: repeat(6, 1fr) !important;
+
+                .tile {
+                    padding: 0 2rem;
+                    align-items: flex-start !important;
+
+                    .soon {
+                        left: 75% !important;
+                        top: 50% !important;
+                    }
+                }
+            }
+
+        }
+
+        @media screen and (max-width: 440px) {
+            .soon {
+                display: none;
+            }
+        }
+
         .panel {
             width: 85%;
             height: 100px;
@@ -62,9 +122,85 @@ section {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
             gap: 30px;
             padding: 0 2rem;
+            transition: 400ms all ease;
+
+            @media screen and (max-width: 500px) {
+                padding: 0 1rem;
+                gap: 10px;
+
+                .btn {
+                    padding: 8px 10px !important;
+                }
+            }
+
+            &.move {
+                transform: translateY(150%) scale(.8);
+                z-index: 1;
+
+                .switcher {
+                    position: absolute;
+                    transform: translateY(-150%) translateX(-300%);
+
+                    @media screen and (max-width: 900px) {
+                        transform: translateY(-150%) translateX(-200%);
+                    }
+
+                    @media screen and (max-width: 440px) {
+                        transform: translateY(-150%) translateX(-150%);
+                    }
+
+                    img {
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+
+            .latest-task {
+                width: 30%;
+                min-width: 180px;
+                height: 80%;
+                border-radius: 20px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                padding: 0 1rem;
+
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 5px;
+                flex-direction: column;
+
+                span.header {
+                    font-size: 1.4em;
+                    font-weight: @medium;
+                }
+
+                p.task {
+                    color: rgba(0, 0, 0, .5);
+                    font-weight: @regular;
+                    font-size: .9em;
+                    text-transform: uppercase;
+                }
+            }
+
+            .switcher {
+                width: 50px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    transition: 300ms all ease-out;
+                    transform: rotate(90deg);
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         .tiles {
@@ -72,6 +208,7 @@ section {
             height: 60%;
             border-radius: 20px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: #fff;
 
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -81,6 +218,7 @@ section {
             justify-items: stretch;
             align-items: stretch;
             padding: 1rem;
+            z-index: 2;
 
             .tile {
                 position: relative;

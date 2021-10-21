@@ -50,27 +50,36 @@
 
     <section class="section-1" id="panel">
         <div class="panel">
+            <div class="switcher">
+                <img src="/resources/icons/bookmark-arrow.png" alt="Bookmark arrow" class="icon32 bookmark">
+            </div>
+
+            <div class="latest-task" id="latest-task">
+                <span class="header">Latest note:</span>
+                <p class="task">No tasks yet</p>
+            </div>
+
             <div class="buttons">
                 <a href="/api/logout" class="btn">Logout</a>
             </div>
         </div>
 
         <div class="tiles">
-            <a href="/calculator" class="tile">
+            <a href="/app/calculator" class="tile">
                 <div class="tile-name">
                     <img src="/resources/icons/features/calculator.png" alt="Calculator" class="icon64">
                     <span class="name">Calculator</span>
                 </div>
             </a>
 
-            <a href="/todo" class="tile">
+            <a href="/app/todo" class="tile">
                 <div class="tile-name">
                     <img src="/resources/icons/features/todo.png" alt="Calculator" class="icon64">
                     <span class="name">TODO</span>
                 </div>
             </a>
 
-            <a href="/notepad" class="tile">
+            <a href="/app/notepad" class="tile">
                 <div class="tile-name">
                     <img src="/resources/icons/features/notepad.png" alt="Calculator" class="icon64">
                     <span class="name">Notepad</span>
