@@ -17,6 +17,7 @@
     <link rel="icon" type="image/png" href="/favicon.ico"/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>Education hub | Make your learning easier!</title>
 </head>
@@ -37,7 +38,7 @@
         </div>
 
         <div class="buttons">
-            <a href="/login" class="btn gradient-btn">Login</a>
+            <a href="/login" class="btn gradient-btn" id="avatar">Login</a>
         </div>
 
         <div class="hamburger">
@@ -53,7 +54,7 @@
             <a href="/app" class="btn">Get started</a>
         </div>
 
-        <img src="/resources/waves/landing-wave.svg" alt="Double Waves" class="wave">
+        <img src="/resources/waves/landing-wave.svg" alt="Double waves" class="wave">
     </section>
 
     <section class="section-2" id="about">
@@ -61,8 +62,8 @@
             <img src="/resources/illustrations/undraw_book_lover_mkck_2.svg" alt="Illustration" class="illustration" data-aos="fade-down">
 
             <div class="content-wrapper">
-                <span class="header" data-aos="fade-left">About</span>
-                <p class="description" data-aos="fade-left" data-aos-delay="50">Hub is a tool box, that helps you educate in your school. Our tools concetrated in one service saves your time and gives you the best performance while learning.</p>
+                <span class="header">About</span>
+                <p class="description">Hub is a tool box, that helps you educate in your school. Our tools concetrated in one service saves your time and gives you the best performance while learning.</p>
             </div>
         </div>
 
@@ -174,6 +175,8 @@
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/js/config.js"></script>
     <script src="/js/animations.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

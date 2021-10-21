@@ -52,6 +52,15 @@ img {.noselect();}
     text-decoration: none;
     transition: 150ms all ease;
 
+    &.avatar-mode {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 10px;
+        border-radius: 20px;
+        padding: 5px 10px;
+    }
+
     &.gradient-btn {
         background-image: linear-gradient(to right, @dark-blue, @medium-blue) !important;
 

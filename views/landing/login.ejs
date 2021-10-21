@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/styles/login.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>Education hub | Login to the service</title>
 </head>
@@ -46,7 +47,7 @@
 
 
     <section class="section-1" id="form">
-        <form action="/api/login" method="post" id="form">
+        <form action="/api/login" method="POST" id="form">
 
             <div class="wrapper form-wrapper">
                 <span class="header">Login to the panel</span>
@@ -123,7 +124,9 @@
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/js/config.js"></script>
     <script src="/js/animations.js"></script>
     <script src="/js/login.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

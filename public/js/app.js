@@ -1,1 +1,20 @@
-"use strict";$(document).ready(function(event){const LANG_KEY="lang",THEME_KEY="theme",MESSAGE_SENT_INFO_TIMEOUT=5e3;var form,languages;function translate(e){if(e){var t=document.querySelectorAll("[data-translation]");t&&Object.keys(e).forEach(a=>{let n=e[a],s=function(e){var a=[];return t.forEach(t=>{t.getAttribute("data-translation")==e&&a.push(t)}),a}(a);0!=s.length&&s.forEach(e=>{e.innerText=n})}),console.log("Translated")}}async function getLanguage(e){var t=await fetch("/json/langs.json",{mode:"no-cors"}).then(e=>e.json()).then(e=>e);return!!t&&(t[e]||t.en)}AOS.init({once:!0}),(async()=>{let e=document.querySelector(".language.en"),t=document.querySelector(".language.pl"),a=window.sessionStorage.getItem(LANG_KEY);if(a||(window.sessionStorage.setItem(LANG_KEY,"en"),a="en"),"pl"==a?t.classList.toggle("hidden"):"en"==a&&e.classList.toggle("hidden"),"en"!=a){let e=await getLanguage(a);e&&translate(e)}})(),form=document.getElementById("contact-form"),form&&form.addEventListener("submit",e=>{var t=$("#contact-form").serializeArray();e.preventDefault(),t&&(async()=>{try{if(200==(await fetch("/api/send-message",{method:"POST",headers:{Accept:"application/json","Content-Type":"application/json"},body:JSON.stringify(function(e){let t={messageContent:null,email:null,name:null};return e&&e.forEach(e=>{switch(e.name){case"name":t.name=e.value;break;case"email":t.email=e.value;break;case"desc":t.messageContent=e.value;break;default:console.info("Unexpected input has been added to the contact form")}}),t}(t))})).status){$("#contact-form")[0].reset();var e=document.getElementById("form-info");e&&e.classList.toggle("fade-left"),setTimeout(()=>{e.classList.toggle("fade-left")},MESSAGE_SENT_INFO_TIMEOUT)}else console.warn("Error occured. Cannot send the message :(")}catch(e){console.info("You are on localhost! You cannot send POST fetches to server, my dear :)",e)}})()}),languages=document.querySelectorAll(".language"),languages&&languages.forEach(e=>{e.addEventListener("click",async t=>{let a=e.getAttribute("data-language");window.sessionStorage.setItem(LANG_KEY,a),translate(await getLanguage(a))})}),(()=>{let switcher=document.querySelector(".switcher");switcher&&(Boolean(eval(window.sessionStorage.getItem(THEME_KEY)))&&(document.body.classList.toggle("dark-theme"),switcher.classList.toggle("dark-theme")),switcher.addEventListener("click",()=>{document.body.classList.toggle("dark-theme"),switcher.classList.toggle("dark-theme"),switcher.classList.contains("dark-theme")?window.sessionStorage.setItem(THEME_KEY,!0):window.sessionStorage.setItem(THEME_KEY,!1)}))})()});
+// -*- coding: utf-8 -*-
+
+'use strict';
+
+$(document).ready(async function () {
+    var avatar = document.getElementById('avatar');
+
+    if ($.cookie(_TOKEN_COOKIE) != null && avatar) {
+        let nickname = await getNickname();
+        avatar.innerHTML = `<img src="/resources/illustrations/avatar.svg" class="icon48"> <span class="nickname">${nickname}</span>`;
+        avatar.setAttribute('href', '/app');
+        avatar.classList.toggle('avatar-mode');
+    }
+
+
+
+    async function getNickname() {
+        return JSON.parse($.cookie(_DATA_COOKIE)).login;
+    }
+});
