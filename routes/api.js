@@ -198,7 +198,7 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.post('/logout', async (req, res, next) => {
+router.get('/logout', async (req, res, next) => {
   if(req.cookies.token) {
       delete tokens[req.cookies.token];
       res.clearCookie('token');
