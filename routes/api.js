@@ -115,6 +115,7 @@ let tokens = {}
   if(req.cookies.token&&tokens[req.cookies.token]) {
     tokens[req.cookies.token].lastActivity = new Date().getTime();
     res.cookie("activity", tokens[req.cookies.token].lastActivity + 60000*60*2 + 10000);
+    res.cookie("data", tokens[req.cookies.token].data);
   }
 }
 
@@ -185,8 +186,11 @@ router.post('/login', async (req, res, next) => {
       do {
           r = getRandomString(40);
       } while(tokens[r]);
-      tokens[r] = {user: q[0].id, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
+      let data = q[0];
+      data.password = "";
+      tokens[r] = {user: q[0].id, data, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
       res.cookie('token', r);
+      res.cookie('data', data);
       res.redirect("/app");
   } else {
       res.redirect("/login?error=1");
