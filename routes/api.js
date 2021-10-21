@@ -104,7 +104,7 @@ let tokens = {}
   });
 }
 
-, apiLoggedOnly() = (req, res) => {
+, apiLoggedOnly = () = (req, res) => {
   if(!req.cookies.token||!tokens[req.cookies.token]) {
       res.json({});
       return false;
