@@ -12,8 +12,6 @@ $(document).ready(async function () {
         avatar.classList.toggle('avatar-mode');
     }
 
-
-
     async function getNickname() {
         return JSON.parse($.cookie(_DATA_COOKIE)).login;
     }

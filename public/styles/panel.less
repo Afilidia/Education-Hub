@@ -1,0 +1,142 @@
+@import 'settings';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: @gray;
+    background: linear-gradient(50deg, #fff 80%, @gray);
+    width: 100vw;
+    height: 150vh;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: @blue;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    transition: 200ms all ease-out;
+    background: @medium-blue;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: @dark-blue;
+}
+
+
+// * SECTIONS
+section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    &.section-1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+
+        .panel {
+            width: 85%;
+            height: 100px;
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 30px;
+            padding: 0 2rem;
+        }
+
+        .tiles {
+            width: 85%;
+            height: 60%;
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            justify-items: stretch;
+            align-items: stretch;
+            padding: 1rem;
+
+            .tile {
+                position: relative;
+                background-color: @gray;
+                border-radius: 20px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                transition: 300ms all ease-out;
+                z-index: 2;
+                text-decoration: none;
+                color: #000;
+
+                &:hover {
+                    background-color: @medium-blue;
+                    cursor: pointer;
+                    transform: scale(.95);
+
+                    img {
+                        filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(354deg) brightness(108%) contrast(101%);
+                    }
+
+                    .name {
+                        color: #fff;
+                    }
+
+                    .soon {
+                        color: rgba(255, 255, 255, .7);
+                    }
+                }
+
+                .soon {
+                    position: absolute;
+                    top: 80%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    font-weight: @medium;
+                    color: @dark-blue;
+                }
+
+                .tile-name {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+
+                    .name {
+                        font-size: 3em;
+                        font-weight: @medium;
+                    }
+                }
+            }
+
+        }
+    }
+}
