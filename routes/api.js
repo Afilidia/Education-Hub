@@ -135,24 +135,24 @@ loadSave();
 
 router.post('/todo/create', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly(req, res)) return res.json({error: "login"});
+  if(!apiLoggedOnly(req, res)) return res.redirect("/login");//res.json({error: "login"});
 
   let task = req.body.task||false;
   if(!task) return res.redirect('/todo');
 
   let q = await query(`INSERT INTO todo (user_id, task) VALUES (${mysql.escape(tokens[req.cookies.token].user)}, ${mysql.escape(task)})`);
-  res.json(q);
+  res.redirect("/todo");//res.json(q);
 });
-router.post('/todo/read', async (req, res, next) => {
+router.get('/todo/read', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly(req, res)) return res.json({error: "login"});
+  if(!apiLoggedOnly(req, res)) return res.redirect("/login");//res.json({error: "login"});
 
   let q = await query(`SELECT * FROM todo WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND removed = false`);
-  res.json(q);
+  res.redirect("/todo");//res.json(q);
 });
 router.post('/todo/update', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly(req, res)) return res.json({error: "login"});
+  if(!apiLoggedOnly(req, res)) return res.redirect("/login");//res.json({error: "login"});
   
   let done = req.body.done||false;
   let task = req.body.task||false;
@@ -160,17 +160,17 @@ router.post('/todo/update', async (req, res, next) => {
   if(!done || !task || !id) return res.redirect('/todo');
 
   let q = await query(`UPDATE todo SET done = ${mysql.escape(done)}, task = ${mysql.escape(task)} WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND id = ${mysql.escape(id)} AND removed = false`);
-  res.json(q);
+  res.redirect("/todo");//res.json(q);
 });
 router.post('/todo/delete', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly(req, res)) return res.json({error: "login"});
+  if(!apiLoggedOnly(req, res)) return res.redirect("/login");//res.json({error: "login"});
   
   let id = req.body.id||false;
   if(!id) return res.redirect('/todo');
 
   let q = await query(`UPDATE todo SET removed = true WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND removed = false AND id = ${mysql.escape(id)}`);
-  res.json(q);
+  res.redirect("/todo");//res.json(q);
 });
 
 router.post('/login', async (req, res, next) => {
