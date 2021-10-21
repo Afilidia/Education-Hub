@@ -229,8 +229,7 @@ router.post('/register', async (req, res, next) => {
 
 setInterval(() => {
   Object.keys(tokens).forEach(tokenid => {
-    if(!tokens[tokenid].lastActivity||tokens[tokenid].lastActivity+60000*60*24<new Date().getTime()) tokens[tokenid].mod = false;
-    if(!tokens[tokenid].created||tokens[tokenid].created+60000*60*24*30*6<new Date().getTime()) delete tokens[tokenid];
+    if((!tokens[tokenid].lastActivity||tokens[tokenid].lastActivity+60000*60*24<new Date().getTime())||(!tokens[tokenid].created||tokens[tokenid].created+60000*60*24*30*6<new Date().getTime())) delete tokens[tokenid];
   });
   save();
 }, 10000);
