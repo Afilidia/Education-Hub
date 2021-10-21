@@ -145,10 +145,10 @@ router.post('/todo/create', async (req, res, next) => {
 });
 router.get('/todo/read', async (req, res, next) => {
   activity(req, res);
-  if(!apiLoggedOnly(req, res)) return res.redirect("/login");//res.json({error: "login"});
+  if(!apiLoggedOnly(req, res)) return res.json({error: "login"});
 
   let q = await query(`SELECT * FROM todo WHERE user_id=${mysql.escape(tokens[req.cookies.token].user)} AND removed = false`);
-  res.redirect("/app/todo");//res.json(q);
+  res.json(q);//res.redirect("/app/todo");
 });
 router.post('/todo/update', async (req, res, next) => {
   activity(req, res);
