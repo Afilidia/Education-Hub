@@ -17,15 +17,20 @@ $(document).ready(async function () {
     if (filters && tasks) filters.forEach(filter => {
         filter.addEventListener('click', (e) => {
             filter_settings[(filter.getAttribute('name').split('-'))[1]] = filter.checked;
+            list.innerHTML = '';
 
             if (filter_settings.done) {
-                list.innerHTML = '';
                 generateTiles(filtered(tasks, 'done'));
+
+            } else {
+                generateTiles(tasks);
             }
 
             if (filter_settings.pending) {
-                list.innerHTML = '';
                 generateTiles(filtered(tasks, 'pending'));
+
+            } else {
+                generateTiles(tasks);
             }
         });
     });
@@ -51,12 +56,14 @@ $(document).ready(async function () {
 
                         if (ID && taskText) await fetch(ENDPOINTS.todo.update, {
                             method: 'POST',
-                            body: {
+                            mode: 'cors',
+                            cache: 'no-cache',
+                            credentials: 'same-origin',
+                            body: JSON.stringify({
                                 done: true,
                                 id: ID,
                                 task: taskText
-                            },
-
+                            }),
                             headers: {
                                 'Content-type': 'application/json; charset=UTF-8'
                             }
@@ -79,11 +86,11 @@ $(document).ready(async function () {
 
                             if (ID && text) await fetch(ENDPOINTS.todo.update, {
                                 method: 'POST',
-                                body: {
-                                    done: true,
+                                body: JSON.stringify({
+                                    done: false,
                                     id: ID,
                                     task: text
-                                },
+                                }),
 
                                 headers: {
                                     'Content-type': 'application/json; charset=UTF-8'
@@ -109,9 +116,9 @@ $(document).ready(async function () {
                     case 'delete': {
                         if (ID) await fetch(ENDPOINTS.todo.delete, {
                             method: 'POST',
-                            body: {
+                            body: JSON.stringify({
                                 id: ID,
-                            },
+                            }),
 
                             headers: {
                                 'Content-type': 'application/json; charset=UTF-8'
@@ -174,13 +181,12 @@ $(document).ready(async function () {
     }
 
     function generateTiles(tasks) {
-        if (tasks) {
-            list.innerHTML = '';
-            tasks.forEach(task => {
-                var tile = getTile(task);
-                list.insertAdjacentHTML('afterbegin', tile);
-            });
-        }
+        list.innerHTML = '';
+
+        if (tasks) tasks.forEach(task => {
+            var tile = getTile(task);
+            list.insertAdjacentHTML('afterbegin', tile);
+        });
     }
 
     function filtered(tasks, filter) {
