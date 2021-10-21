@@ -202,6 +202,8 @@ router.get('/logout', async (req, res, next) => {
   if(req.cookies.token) {
       delete tokens[req.cookies.token];
       res.clearCookie('token');
+      res.clearCookie('data');
+      res.clearCookie('activity');
   }
   res.redirect('/login');
 });
