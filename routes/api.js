@@ -109,6 +109,7 @@ let tokens = {}
       res.json({});
       return false;
   }
+  else return true;
 }
 
 , activity = (req, res) => {
