@@ -188,6 +188,7 @@ router.post('/login', async (req, res, next) => {
       } while(tokens[r]);
       let data = q[0];
       data.password = "";
+      data = JSON.stringify(data);
       tokens[r] = {user: q[0].id, data, created: new Date().getTime(), lastActivity: new Date().getTime(), ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress};
       res.cookie('token', r);
       res.cookie('data', data);
