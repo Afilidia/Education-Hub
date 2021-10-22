@@ -1,0 +1,126 @@
+@import 'settings';
+
+
+// * SECTION * //
+section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    &.section-1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        @media screen and (max-width: 880px) {
+            height: 180vh;
+        }
+
+        .questions {
+            position: relative;
+            width: 70%;
+            height: 70%;
+            // border: solid 1px #000;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1rem;
+
+            @media screen and (max-width: 880px) {
+                gap: 20px;
+                width: 90%;
+
+                .question-tile {
+                    position: static !important;
+                    transform: none !important;
+
+                    min-width: 320px;
+                    width: 50% !important;
+                    height: 250px !important;
+                }
+            }
+
+            .question-tile {
+                width: 250px;
+                height: 200px;
+
+                border-radius: 20px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                padding: 2rem;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 1px;
+                position: absolute;
+
+                span.question {
+                    width: 100%;
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    font-weight: @bold;
+                    text-align: center;
+                }
+
+                span.answer {
+                    width: 100%;
+                    height: 80%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    color: @medium-blue;
+                    font-weight: @regular;
+                    text-align: center;
+                    font-size: .9em;
+
+                    a {
+                        color: @dark-blue;
+                        text-decoration: none;
+                        font-weight: @medium;
+                        margin-left: 2px;
+                    }
+                }
+
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                &:first-child {
+                    // left: 20%;
+                    // top: 15%;
+
+                    transform: translateX(-160%) translateY(-100%);
+                }
+
+                &:nth-child(2) {
+                    // top: 48%;
+                    // left: 20%;
+                    transform: translateX(-160%) translateY(10%);
+                }
+
+                &:nth-child(3) {
+                    // top: 15%;
+                    // right: 20%;
+
+                    transform: translateX(60%) translateY(10%);
+                }
+
+                &:nth-child(4) {
+                    // top: 15%;
+                    // right: 20%;
+
+                    transform: translateX(60%) translateY(-100%);
+                }
+            }
+        }
+    }
+}

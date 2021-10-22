@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="/styles/panel.css">
+    <link rel="stylesheet" href="/styles/faq.css">
     <link rel="stylesheet" href="/styles/components.css">
 
 
@@ -19,10 +19,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <title>Education hub | Panel</title>
+    <title>Education hub | TODO list</title>
 </head>
 <body>
-
 
     <!-- NAV BAR -->
     <nav id="navigation">
@@ -48,70 +47,33 @@
     </nav>
 
 
-    <section class="section-1" id="panel">
-        <div class="panel">
-            <div class="switcher">
-                <img src="/resources/icons/bookmark-arrow.png" alt="Bookmark arrow" class="icon32 bookmark">
+    <section class="section-1" id="main">
+        <div class="questions">
+
+            <div class="question-tile">
+                <span class="question">I forgot my password, can i recover it?</span>
+                <span class="answer">For now unfortumentelly not, the website is a competition project and will be supported after.</span>
             </div>
 
-            <div class="latest-task">
-                <span class="header">Latest note:</span>
-                <p class="task" id="latest-task">No tasks yet</p>
+            <div class="question-tile">
+                <span class="question">Can I get more information about the company?</span>
+                <span class="answer">Sure! Here's the <a href="https://afilidia.com"> link.</a></span>
             </div>
 
-            <div class="buttons">
-                <a href="/api/logout" class="btn">Logout</a>
+            <div class="question-tile">
+                <span class="question">What's the point of the website?</span>
+                <span class="answer">Education Hub has been created in order to help students, teachers and other people that learn with their daily education.</span>
             </div>
-        </div>
 
-        <div class="tiles">
-            <a href="/app/calculator" class="tile">
-                <div class="tile-name">
-                    <img src="/resources/icons/features/calculator.png" alt="Calculator" class="icon64">
-                    <span class="name">Calculator</span>
-                </div>
-            </a>
+            <div class="question-tile">
+                <span class="question">Why do you use account system?</span>
+                <span class="answer">We are giving you option to create an account in order to access your notes, tasks and other features on the most devices!</span>
+            </div>
 
-            <a href="/app/todo" class="tile">
-                <div class="tile-name">
-                    <img src="/resources/icons/features/todo.png" alt="Calculator" class="icon64">
-                    <span class="name">TODO</span>
-                </div>
-            </a>
-
-            <a href="/app/notepad" class="tile">
-                <div class="tile-name">
-                    <img src="/resources/icons/features/notepad.png" alt="Calculator" class="icon64">
-                    <span class="name">Notepad</span>
-                </div>
-            </a>
-
-            <a href="/soon" class="tile">
-                <div class="tile-name">
-                    <img src="/resources/icons/features/film.png" alt="Calculator" class="icon64">
-                    <span class="name">Films</span>
-                </div>
-
-                <span class="soon">In development</span>
-            </a>
-
-            <a href="/soon" class="tile">
-                <div class="tile-name">
-                    <img src="/resources/icons/features/quiz.png" alt="Calculator" class="icon64">
-                    <span class="name">Quizes</span>
-
-                    <span class="soon">In development</span>
-                </div>
-            </a>
-
-            <a href="/soon" class="tile">
-                <div class="tile-name">
-                    <img src="/resources/icons/features/compiler.png" alt="Calculator" class="icon64">
-                    <span class="name">Compiler</span>
-
-                    <span class="soon">In development</span>
-                </div>
-            </a>
+            <div class="question-tile">
+                <span class="question">Fun fact</span>
+                <span class="answer">Service took only 24 hours of development.</span>
+            </div>
         </div>
     </section>
 
@@ -139,7 +101,7 @@
                 <a href="/faq" class="option">FAQ</a>
             </div>
 
-            <a href="#panel" class="to-top">
+            <a href="#main" class="to-top">
                 <img src="/resources/icons/arrow-up.png" alt="Arrow up" class="icon32">
                 <span class="text">to the top</span>
             </a>

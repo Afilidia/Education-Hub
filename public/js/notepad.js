@@ -40,6 +40,9 @@ $(document).ready(function (event) {
     onFileClicked();
     onOptionClicked();
 
+    // * Enable 'Tab'
+    enableTab(document.querySelector('textarea'));
+
     // $(document).keypress(function(event) {
     //     if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
     //     alert("Ctrl-S pressed");
@@ -346,6 +349,22 @@ $(document).ready(function (event) {
         }
 
         return false;
+    }
+
+    function enableTab(element) {
+        element.onkeydown = function(e) {
+            if (e.key == 'Tab') {
+
+                var val = this.value,
+                    start = this.selectionStart,
+                    end = this.selectionEnd;
+
+                this.value = val.substring(0, start) + '\t' + val.substring(end);
+                this.selectionStart = this.selectionEnd = start + 1;
+                return false;
+
+            }
+        };
     }
 
 
