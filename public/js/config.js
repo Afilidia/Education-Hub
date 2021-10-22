@@ -7,6 +7,9 @@
 const _TOKEN_COOKIE = 'token';
 const _DATA_COOKIE = 'data';
 
+const _FILE_LIST = '_file-list';
+const _FILE_STATE = '_file-state';
+
 const _LOCAL_SUM_HISTORY = '_sum_history';
 
 // * Endpoints * //
@@ -18,3 +21,6 @@ const ENDPOINTS = {
         delete: '/api/todo/delete',      // id
     }
 };
+
+// * FILE * //
+const SUPPORTED_EXT = ['txt'];

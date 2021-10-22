@@ -18,7 +18,7 @@ $(document).ready(async function () {
         filter.addEventListener('click', (e) => {
             filter_settings[(filter.getAttribute('name').split('-'))[1]] = filter.checked;
 
-            console.log(filter_settings);
+            // console.log(filter_settings);
 
             if (filter_settings.done && filter_settings.pending)        generateTiles(tasks);
             else if (filter_settings.done && !filter_settings.pending)  generateTiles(filtered(tasks, 'done'));
@@ -175,7 +175,7 @@ $(document).ready(async function () {
     }
 
     function generateTiles(tasks) {
-        // list.innerHTML = '';
+        list.innerHTML = '';
 
         if (tasks) tasks.forEach(task => {
             var tile = getTile(task);

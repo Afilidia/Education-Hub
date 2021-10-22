@@ -23,6 +23,45 @@
 </head>
 <body>
 
+    <div class="remove-modal" id="remove-modal">
+        <div class="modal">
+            <span class="warning">Do you want to delete <span class="file-name" id="modal-delete-file-name">example.txt</span>?</span>
+
+            <form class="buttons" id="remove-modal-form">
+                <button class="button cancel-btn" data-state="true" type="submit">
+                    <div class="cross">
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                    <span class="text">Delete</span>
+                </button>
+
+                <button class="btn" type="button">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="change-modal" id="change-modal">
+        <div class="modal">
+            <span class="info">Changing the <span class="file-name" id="modal-change-file-name">example.txt</span></span>
+
+            <form class="buttons" id="change-modal-form">
+                <div class="input-wrapper">
+                    <input type="text" name="password" id="password" class="input text-inp" placeholder="example.txt">
+                    <label for="input">Type new filename and extension</label>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn">Save</button>
+                    <button class="btn" type="button">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
     <!-- NAV BAR -->
     <nav id="navigation">
         <div class="logo">
@@ -53,7 +92,13 @@
         </a>
 
         <div class="box workspace">
-            <div class="topbar"></div>
+            <div class="topbar">
+                <span class="filename" id="filename">Choose a file</span>
+
+                <div class="tools"></div>
+            </div>
+
+            <textarea name="input" id="input-textarea-field" class="input-textarea-field" cols="30" rows="10" autofocus></textarea>
         </div>
 
         <div class="box-wrapper">
@@ -61,22 +106,23 @@
                 <span class="header">Options</span>
 
                 <div class="options">
-                    <div class="option">
+                    <div class="option" data-type="save">
                         <img src="/resources/icons/notepad/save.png" class="icon32" alt="Save">
                         <span class="option-name">Save note</span>
+                        <span class="saved" id="saved">saved</span>
                     </div>
 
-                    <div class="option">
+                    <div class="option" data-type="change">
                         <img src="/resources/icons/buttons/edit.png" class="icon32" alt="Save">
                         <span class="option-name">Change filename</span>
                     </div>
 
-                    <div class="option">
+                    <div class="option" data-type="download">
                         <img src="/resources/icons/notepad/download.png" class="icon32" alt="Save">
                         <span class="option-name">Download</span>
                     </div>
 
-                    <div class="option">
+                    <div class="option" data-type="delete">
                         <img src="/resources/icons/notepad/delete.png" class="icon32" alt="Save">
                         <span class="option-name">Remove</span>
                     </div>
@@ -84,13 +130,15 @@
             </div>
 
             <div class="box files">
-                <span class="header">Files</span>
+                <span class="no-files">No files yet, click the plus to create one</span>
+
+                <span class="header">
+                    Files
+                    <input type="text" name="new-file" id="new-file-input" class="small-input" placeholder="example.txt">
+                    <img src="/resources/icons/plus.png" id="create-file" class="icon16" alt="Add file"></span>
 
                 <div class="files-list">
-                    <span class="file">codejam <span class="ext">.txt</span></span>
-                    <span class="file">school <span class="ext">.txt</span></span>
-                    <span class="file">pleasehelp <span class="ext">.jd</span></span>
-
+                    <!-- <span class="file" data-id="1"><span class="file-name">codejam</span> <span class="ext">.txt</span></span> -->
                 </div>
             </div>
         </div>

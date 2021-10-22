@@ -15,6 +15,22 @@ $(document).ready(function () {
     var panelSwitcher = document.querySelector('.switcher');
     var panel = document.querySelector('.panel');
 
+    var cancel_btns = document.querySelectorAll('.cancel-btn');
+
+    if (cancel_btns) cancel_btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+
+            setTimeout(() => {
+                btn.querySelector('span').innerText = "Canceled";
+                btn.classList.toggle('clicked');
+
+                setTimeout(() => {
+                    (btn.querySelector('.cross')).style.display = "none";
+                }, 3000);
+            }, 300);
+        });
+    });
+
     if (menu && hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
