@@ -154,7 +154,7 @@ router.post('/todo/update', async (req, res, next) => {
   activity(req, res);
   if(!apiLoggedOnly(req, res)) return res.json({error: "login"});
   
-  let done = req.body.done||false;
+  let done = req.body.done;
   let task = req.body.task||false;
   let id = req.body.id||false;
   if(typeof done == undefined || !task || !id) return res.redirect("/app/todo");
