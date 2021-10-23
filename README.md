@@ -5,8 +5,8 @@
 ### Coming soon!
 
 ### Required .env file with:
-- HOST
-- DATABASE
-- USERNAME
-- PASSWORD
+- DB_HOST
+- DB_DATABASE
+- DB_USERNAME
+- DB_PASSWORD
 - ENCRYPT_KEY
