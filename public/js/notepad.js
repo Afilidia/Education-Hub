@@ -43,9 +43,9 @@ $(document).ready(function (event) {
     // * Enable 'Tab'
     enableTab(document.querySelector('textarea'));
 
-    $(document).keypress(function(event) {
-        if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
-        event.preventDefault();
+    $(document).keypress(function(e) {
+        if (!(e.which == 115 && e.ctrlKey) && !(e.which == 19)) return true; 
+        e.preventDefault();
         save(state.currentID);
         alert("Ctrl-S pressed");
         return false;
@@ -54,7 +54,7 @@ $(document).ready(function (event) {
     // * New file creation clicked
     if (create) create.addEventListener('click', () => {
         create.classList.toggle('active');
-        var filenameInput = document.getElementById('new-file-input');
+        var filenameInput = document.getElementById('new-file-input'); 
         if (filenameInput) {
             filenameInput.classList.toggle('slide');
             filenameInput.focus();
