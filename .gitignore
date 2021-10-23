@@ -1,5 +1,6 @@
 package-lock.json
-cookies.json
+cookies*.json
+stats.json
 public/styles/*.css
 EducationHUB.code-workspace
 public/downloads/builds/*
