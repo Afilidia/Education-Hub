@@ -5,7 +5,7 @@
 $(document).ready(function (event) {
     var create = document.getElementById('create-file');
 
-    const data = readFileListFromCookies() || [];
+    const data = readFileListFromCookies() || []; 
     const state = readFileListState() || {
         latestID: 0,
         currentID: 0
@@ -54,7 +54,10 @@ $(document).ready(function (event) {
     if (create) create.addEventListener('click', () => {
         create.classList.toggle('active');
         var filenameInput = document.getElementById('new-file-input');
-        if (filenameInput) filenameInput.classList.toggle('slide');
+        if (filenameInput) {
+            filenameInput.classList.toggle('slide');
+            filenameInput.focus();
+        }
 
         document.addEventListener('keypress', (event) => {
             if (event.key == 'Enter') {
@@ -67,8 +70,8 @@ $(document).ready(function (event) {
 
                 let obj = {
                     filename: filename,
-                    name: name.trim(),
-                    ext: extension.trim()
+                    name: name.trim(),      //.replaceAll(' ', '')
+                    ext: extension.trim()   //.replaceAll(' ', '')
                 };
 
                 // * Create
@@ -211,17 +214,50 @@ $(document).ready(function (event) {
         let file = getFileByID(id);
         let note = workspace.value;
 
-        if (file) data[data.indexOf(file)].note = note;
-        saveFileListToCookies(data);
+        if (file) {
+            data[data.indexOf(file)].note = note;
+            saveFileListToCookies(data);
 
-        let saved = document.getElementById('saved');
+            let saved = document.getElementById('saved');
 
-        if (saved) {
-            saved.classList.toggle('show');
-            setTimeout(() => {
-                saved.classList.remove('show');
-            }, 1000);
+            if (saved) {
+                saved.classList.toggle('show');
+                setTimeout(() => {
+                    saved.classList.remove('show');
+                }, 1000);
 
+            }
+
+        } else {
+            if (workspace.value != "") {
+                create.classList.toggle('active');
+                let filenameInput = document.getElementById('new-file-input');
+                if (filenameInput) {
+                    filenameInput.classList.toggle('slide');
+                    filenameInput.focus();
+                }
+
+                document.addEventListener('keypress', (event) => {
+                    if (event.key == 'Enter') {
+                        if (filenameInput) filenameInput.classList.remove('slide');
+                        create.classList.remove('active');
+        
+                        let filename = filenameInput.value;
+                        let extension = filename.split('.')[1];
+                        let name = filename.split('.')[0];
+        
+                        let obj = {
+                            filename: filename,
+                            name: name.trim(),      //.replaceAll(' ', '')
+                            ext: extension.trim()   //.replaceAll(' ', '')
+                        };
+        
+                        // * Create
+                        if (/**(SUPPORTED_EXT.includes(extension)) && */ (checkNameAvailability(obj)) && (obj.ext !== undefined)) createFile(obj);
+                        filenameInput.value = '';
+                    }
+                });
+            }
         }
     }
 
@@ -251,8 +287,8 @@ $(document).ready(function (event) {
 
             if (checkNameAvailability({
                 filename: filename,
-                name: (filename.split('.')[0]).trim(),
-                ext: (filename.split('.')[1]).trim(),
+                name: (filename.split('.')[0]).trim(),  //.replaceAll(' ', '')
+                ext: (filename.split('.')[1]).trim(),   //.replaceAll(' ', '')
             })) {
                 if (filename_e) filename_e.textContent = filename;
 

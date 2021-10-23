@@ -15,7 +15,7 @@ $(document).ready(async function () {
 
     var filters = document.querySelectorAll('input[type="checkbox"]');
     if (filters && tasks) filters.forEach(filter => {
-        filter.addEventListener('click', (e) => {
+        filter.addEventListener('click', () => {
             filter_settings[(filter.getAttribute('name').split('-'))[1]] = filter.checked;
 
             // console.log(filter_settings);
@@ -24,6 +24,9 @@ $(document).ready(async function () {
             else if (filter_settings.done && !filter_settings.pending)  generateTiles(filtered(tasks, 'done'));
             else if (!filter_settings.done && filter_settings.pending)  generateTiles(filtered(tasks, 'pending'));
             else                                                        list.innerHTML = '';
+
+            // ! Add event listeners to the new buttons
+            // adjustEventListeners();
         });
     });
 
@@ -40,6 +43,7 @@ $(document).ready(async function () {
         if (buttons) buttons.forEach(button => {
             button.addEventListener('click', async () => {
                 let type = button.getAttribute('data-type');
+                let done = dot.classList.contains('done');
 
 
                 switch (type) {
@@ -79,7 +83,7 @@ $(document).ready(async function () {
                             if (ID && text) await fetch(ENDPOINTS.todo.update, {
                                 method: 'POST',
                                 body: JSON.stringify({
-                                    done: false,
+                                    done: done,
                                     id: ID,
                                     task: text
                                 }),
