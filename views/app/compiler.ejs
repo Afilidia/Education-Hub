@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="/styles/compiler.css">
+    <link rel="stylesheet" href="/styles/components.css">
+
+
+    <link rel="icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Education hub | Online compiler</title>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <nav id="navigation">
+        <div class="logo">
+            <span class="site-name">Education hub</span>
+        </div>
+
+        <div class="menu">
+            <a href="/app" class="option">Panel</a>
+            <a href="/#about" class="option">About</a>
+            <a href="/#features" class="option">Features</a>
+            <a href="/faq" class="option">FAQ</a>
+        </div>
+
+        <div class="buttons">
+            <a href="/login" class="btn gradient-btn" id="avatar">Login</a>
+        </div>
+
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+
+    <section class="section-1" id="main">
+        <div class="box editor" theme="white">
+            <div class="settings">
+                <div class="input-settings">
+                    <span class="filename">app.js</span>
+
+                    <form id="app-cover">
+                        <div id="select-box">
+                            <input type="checkbox" id="options-view-button">
+                            <div id="select-button" class="brd">
+                                <div id="selected-value">
+                                    <span>Select a language</span>
+                                </div>
+                                <div id="chevrons">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div id="options">
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="javascript">
+                                        <input class="s-c bottom" type="radio" name="platform" value="javascript">
+                                        <!-- <img src="/resources/icons/languages/js.svg" alt="Javascript" class="icon24 language-icon javascript"> -->
+                                        <span class="label">Javascript</span>
+                                        <span class="opt-val">Javascript</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="python">
+                                        <input class="s-c bottom" type="radio" name="platform" value="python">
+                                        <!-- <img src="/resources/icons/languages/py.svg" alt="Python" class="icon24 language-icon python"> -->
+                                        <span class="label">Python</span>
+                                        <span class="opt-val">Python</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="csharp">
+                                        <input class="s-c bottom" type="radio" name="platform" value="csharp">
+                                        <!-- <img src="/resources/icons/languages/csharp.svg" alt="C#, C++, C" class="icon24 language-icon csharp"> -->
+                                        <span class="label">C# (C++ & C)</span>
+                                        <span class="opt-val">C# (C++ & C)</span>
+                                </div>
+                                <div id="option-bg"></div>
+                            </div>
+                        </div>
+                </form>
+
+
+                    <div class="buttons">
+                        <button class="editor-btn download" data-type="download">
+                            <img src="/resources/icons/editor/download.png" alt="download" class="icon16 icon">
+                        </button>
+                        <button class="editor-btn fullscreen" data-type="fullscreen">
+                            <img src="/resources/icons/editor/fullscreen.png" alt="fullscreen" class="icon16 icon">
+                        </button>
+                        <button class="editor-btn theme" data-type="theme">
+                            <img src="/resources/icons/editor/theme.png" alt="theme" class="icon16 icon">
+                        </button>
+                        <button class="btn" id="run">Run</button>
+                    </div>
+                </div>
+
+                <div class="output-settings">
+                    <span class="output-text">Output</span>
+                    <button class="clear-btn btn">Clear</button>
+                </div>
+            </div>
+
+            <div class="wrapper">
+                <div class="input" id="input"></div>
+
+                <div class="output" id="output"></div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer>
+        <img src="/resources/waves/footer-wave.svg" alt="Footer wave" class="wave">
+
+        <div class="column left">
+            <div class="corner">
+                <div class="text logo">Education hub</div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="corner">
+                <div class="bar big"></div>
+                <div class="text copyright">&copy 2021. Designed and created by <a href="https://afilidia.com">Afilidia Group</a>. All rights reserved.</div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="options">
+                <a href="/#landing" class="option">Landing</a>
+                <a href="/app" class="option">Panel</a>
+                <a href="/#about" class="option">About</a>
+                <a href="/#features" class="option">Features</a>
+                <a href="/faq" class="option">FAQ</a>
+            </div>
+
+            <a href="#main" class="to-top">
+                <img src="/resources/icons/arrow-up.png" alt="Arrow up" class="icon32">
+                <span class="text">to the top</span>
+            </a>
+        </div>
+
+        <div class="column right">
+            <div class="corner">
+                <a href="https://discord.gg/PmD6ZS9PPz"><img src="/resources/icons/media/discord.png" class="media-i icon32"></img></a>
+                <div class="bar small"></div>
+            </div>
+
+            <div class="corner">
+                <div class="bar"></div>
+                <div class="wrapper">
+                    <a href="#" class="link">Privacy Policy</a>
+                    <a href="#" class="link">Terms of service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/ace/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/js/config.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/compiler.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

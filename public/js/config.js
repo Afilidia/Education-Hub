@@ -12,6 +12,8 @@ const _FILE_STATE = '_file-state';
 
 const _LOCAL_SUM_HISTORY = '_sum_history';
 
+const _ACE_THEME = '_ace-theme';
+
 // * Endpoints * //
 const ENDPOINTS = {
     todo: {

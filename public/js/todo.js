@@ -9,8 +9,8 @@ $(document).ready(async function () {
     generateTiles(tasks);
 
     const filter_settings = {
-        done: false,
-        pending: false,
+        done: true,
+        pending: true,
     };
 
     var filters = document.querySelectorAll('input[type="checkbox"]');
@@ -20,13 +20,10 @@ $(document).ready(async function () {
 
             // console.log(filter_settings);
 
-            if (filter_settings.done && filter_settings.pending)        generateTiles(tasks);
-            else if (filter_settings.done && !filter_settings.pending)  generateTiles(filtered(tasks, 'done'));
-            else if (!filter_settings.done && filter_settings.pending)  generateTiles(filtered(tasks, 'pending'));
-            else                                                        list.innerHTML = '';
-
-            // ! Add event listeners to the new buttons
-            // adjustEventListeners();
+            if (filter_settings.done && filter_settings.pending)        showAllTiles();
+            else if (filter_settings.done && !filter_settings.pending)  hideOppositeTiles(filtered(tasks, 'done'));
+            else if (!filter_settings.done && filter_settings.pending)  hideOppositeTiles(filtered(tasks, 'pending'));
+            else                                                        hideAllTiles();
         });
     });
 
@@ -39,6 +36,11 @@ $(document).ready(async function () {
         let dot = task.querySelector('.dot');
 
         let ID = Number(task.getAttribute('data-id') || -1);
+        let iTask = (() => {
+            for (let i=0; i<tasks.length; i++) {
+                if (tasks[i].id == ID) return i;
+            }
+        })();
 
         if (buttons) buttons.forEach(button => {
             button.addEventListener('click', async () => {
@@ -69,7 +71,8 @@ $(document).ready(async function () {
                             return Promise.reject(response);
 
                         }).then(function (data) {
-                            console.log('SUCCESS');
+                            // console.log('SUCCESS');
+                            tasks[iTask].done = true;
 
                         }).catch(function (error) {
                             console.warn('Something went wrong.', error);
@@ -97,7 +100,8 @@ $(document).ready(async function () {
                                 return Promise.reject(response);
 
                             }).then(function (data) {
-                                console.log('SUCCESS');
+                                // console.log('SUCCESS');
+                                tasks[iTask].note = text;
 
                             }).catch(function (error) {
                                 console.warn('Something went wrong.', error);
@@ -144,10 +148,50 @@ $(document).ready(async function () {
                     } break;
                 }
 
-                dot.classList.toggle(type);
+                dot.classList.add(type);
             });
         });
     });
+
+
+    function getOpposite(all, part) {
+        return all.filter(function (task) {
+            return (part.indexOf(task) == -1);
+        })
+    }
+
+    // * Hide the tiles other that passed
+    function hideOppositeTiles(tiles) {
+        var opposite = getOpposite(tasks, tiles);
+        var all = document.querySelectorAll('.task');
+
+        if (tiles) tiles.forEach(tile => {
+            all.forEach(element => {
+                if (Number(element.getAttribute('data-id')) == tile.id) element.classList.remove('hide');
+            });
+        });
+
+        if (opposite) opposite.forEach(tile => {
+            all.forEach(element => {
+                if (Number(element.getAttribute('data-id')) == tile.id) element.classList.add('hide');
+            });
+        });
+    }
+
+    // * Show all tiles
+    function showAllTiles() {
+        var all = document.querySelectorAll('.task');
+        if (all) all.forEach(element => {
+            element.classList.remove('hide');
+        });
+    }
+
+    function hideAllTiles() {
+        var all = document.querySelectorAll('.task');
+        if (all) all.forEach(element => {
+            element.classList.add('hide');
+        });
+    }
 
     async function getTasks() {
         return new Promise((resolve, reject) => {
