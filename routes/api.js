@@ -15,10 +15,10 @@ const CryptoJS = require("crypto-js")
 , decrypt = (pass) => {return CryptoJS.AES.decrypt(pass, secretKey).toString(CryptoJS.enc.Utf8);}
 
 , connection = mysql.createConnection({
-  host     : process.env.HOST,
-  user     : process.env.USERNAME,
-  password : process.env.PASSWORD,
-  database : process.env.DATABASE
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USERNAME,
+  password : process.env.DB_PASSWORD,
+  database : process.env.DB_DATABASE
 });
 
 try {
