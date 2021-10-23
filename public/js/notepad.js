@@ -43,12 +43,13 @@ $(document).ready(function (event) {
     // * Enable 'Tab'
     enableTab(document.querySelector('textarea'));
 
-    // $(document).keypress(function(event) {
-    //     if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
-    //     alert("Ctrl-S pressed");
-    //     event.preventDefault();
-    //     return false;
-    // });
+    $(document).keypress(function(event) {
+        if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+        event.preventDefault();
+        save(state.currentID);
+        alert("Ctrl-S pressed");
+        return false;
+    });
 
     // * New file creation clicked
     if (create) create.addEventListener('click', () => {
