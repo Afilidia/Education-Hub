@@ -16,7 +16,7 @@ $(document).ready(async function () {
 
     const modes = {
         js: ace.require("ace/mode/javascript").Mode,
-        py: ace.require("ace/mode/python").Mode,
+        py: ace.require("ace/mode/python").Mode, 
         cs: ace.require("ace/mode/csharp").Mode
     };
 
@@ -83,6 +83,12 @@ $(document).ready(async function () {
             let lang = option.getAttribute('data-language');
             currentLanguage = lang;
             editor.session.setMode(new modes[currentLanguage]());
+
+            // ! Temporary set the starting code when switched to 
+            // ! The other language
+            // ! -> Later save the code before switching and load it
+            // ! -> when switched back
+            editor.setValue(getStartingCode(lang));
         });
     });
 
