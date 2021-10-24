@@ -126,7 +126,7 @@ $(document).ready(async function () {
     if (options) options.forEach(option => {
         option.addEventListener('click', () => {
             // * Save the latest code in cookies
-            // saveCodeToCookies(currentLanguage);
+            saveCodeToCookies(currentLanguage);
 
             // * Switch to clicked
             let lang = option.getAttribute('data-language');
@@ -164,11 +164,9 @@ $(document).ready(async function () {
         editor.session.setMode(getMode(currentLanguage));
         if (filename) filename.textContent = files[currentLanguage];
 
-        // ! Temporary set the starting code when switched to
-        // ! The other language
-        // ! -> Later save the code before switching and load it
-        // ! -> when switched back
-        editor.setValue(getStartingCode(currentLanguage));
+        let user_code = getCodeFromCookies();
+        if (user_code[currentLanguage] != getStartingCode(currentLanguage) && user_code[currentLanguage] != '') editor.setValue(user_code[currentLanguage]);
+        else editor.setValue(getStartingCode(currentLanguage));
     }
 
     // * Gets value from editor
@@ -177,12 +175,12 @@ $(document).ready(async function () {
     }
 
     function saveCodeToCookies(lang) {
-        code[lang] = getCode();
-        $.cookies(_USER_CODE, JSON.stringify(code), {path: '/', expires: 365});
+        USER_CODE[lang] = getCode();
+        $.cookie(_USER_CODE, JSON.stringify(USER_CODE), {path: '/', expires: 365});
     }
 
     function getCodeFromCookies() {
-        return JSON.parse($.cookies(_USER_CODE)) || '';
+        return ($.cookie(_USER_CODE) != null) ? JSON.parse($.cookie(_USER_CODE)) : USER_CODE;
     }
 
     // * Cookies functions
