@@ -51,7 +51,7 @@
         <div class="box editor" theme="white">
             <div class="settings">
                 <div class="input-settings">
-                    <span class="filename">app.js</span>
+                    <span class="filename" id="filename">app.js</span>
 
                     <form id="app-cover">
                         <div id="select-box">
@@ -61,7 +61,7 @@
                                     <span>Select a language</span>
                                 </div>
                                 <div id="chevrons">
-                                    <i class="fas fa-chevron-up"></i> 
+                                    <i class="fas fa-chevron-up"></i>
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                             </div>
@@ -73,6 +73,7 @@
                                         <span class="label">Javascript</span>
                                         <span class="opt-val">Javascript</span>
                                 </div>
+
                                 <div class="option" data-language="py">
                                         <input class="s-c top" type="radio" name="platform" value="python">
                                         <input class="s-c bottom" type="radio" name="platform" value="python">
@@ -80,6 +81,7 @@
                                         <span class="label">Python</span>
                                         <span class="opt-val">Python</span>
                                 </div>
+
                                 <div class="option" data-language="cs">
                                         <input class="s-c top" type="radio" name="platform" value="csharp">
                                         <input class="s-c bottom" type="radio" name="platform" value="csharp">
@@ -87,6 +89,23 @@
                                         <span class="label">C# (C++ & C)</span>
                                         <span class="opt-val">C# (C++ & C)</span>
                                 </div>
+
+                                <div class="option" data-language="php">
+                                    <input class="s-c top" type="radio" name="platform" value="php">
+                                    <input class="s-c bottom" type="radio" name="platform" value="php">
+                                    <!-- <img src="/resources/icons/languages/csharp.svg" alt="C#, C++, C" class="icon24 language-icon csharp"> -->
+                                    <span class="label">PHP</span>
+                                    <span class="opt-val">PHP</span>
+                                </div>
+
+                                <div class="option" data-language="java">
+                                    <input class="s-c top" type="radio" name="platform" value="java">
+                                    <input class="s-c bottom" type="radio" name="platform" value="java">
+                                    <!-- <img src="/resources/icons/languages/csharp.svg" alt="C#, C++, C" class="icon24 language-icon csharp"> -->
+                                    <span class="label">Java</span>
+                                    <span class="opt-val">Java</span>
+                                </div>
+
                                 <div id="option-bg"></div>
                             </div>
                         </div>
@@ -109,7 +128,7 @@
 
                 <div class="output-settings">
                     <span class="output-text">Output</span>
-                    <button class="clear-btn btn">Clear</button> 
+                    <button class="clear-btn btn">Clear</button>
                 </div>
             </div>
 
@@ -117,7 +136,12 @@
                 <div class="input" id="input"></div>
 
                 <div class="output" id="output">
-                    <div class="loader show"></div>
+                    <div class="loader show">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
 
