@@ -6,15 +6,18 @@ $(document).ready(async function () {
     var input = document.getElementById('input'),
         output = document.getElementById('output');
 
+    var currentLanguage = 'js';
     var run = document.getElementById('run');
-    var code = '// Type your code here...';
+    var code = getStartingCode(currentLanguage);
+
+    var options = document.getElementById('app-cover').querySelectorAll('.option');
 
     var theme = true;
 
     const modes = {
         js: ace.require("ace/mode/javascript").Mode,
-        py: null,
-        cs: null
+        py: ace.require("ace/mode/python").Mode,
+        cs: ace.require("ace/mode/csharp").Mode
     };
 
 
@@ -75,6 +78,14 @@ $(document).ready(async function () {
         });
     });
 
+    if (options) options.forEach(option => {
+        option.addEventListener('click', () => {
+            let lang = option.getAttribute('data-language');
+            currentLanguage = lang;
+            editor.session.setMode(new modes[currentLanguage]());
+        });
+    });
+
     if (run) run.addEventListener('click', () => {
         let code = editor.getValue();
 
@@ -83,6 +94,10 @@ $(document).ready(async function () {
 
     function getTheme() {
         return (!theme) ? 'ace/theme/dracula' : 'ace/theme/eclipse';
+    }
+
+    function getStartingCode(lang) {
+        return startingLanguageCode[lang];
     }
 
     // * Cookies functions

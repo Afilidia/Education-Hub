@@ -9,8 +9,28 @@ $(document).ready(async function () {
     if ($.cookie(_TOKEN_COOKIE) != null && avatar) {
         let nickname = await getNickname();
         avatar.innerHTML = `<img src="/resources/illustrations/avatar.svg" class="icon48"> <span class="nickname">${nickname}</span>`;
-        avatar.setAttribute('href', '/app');
+        avatar.setAttribute('href', '/app'); 
         avatar.classList.toggle('avatar-mode');
+    }
+
+    if (!$.cookie(_COOKIES_ACCEPTED)) {
+        var modal = document.getElementById('cookies-modal');
+        if (modal) {
+            modal.classList.toggle('show');
+
+            var accept = modal.querySelector('.cookie-btn.accept');
+            var cancel = modal.querySelector('.cookie-btn.cancel');
+
+            if (accept) accept.addEventListener('click', () => {
+                $.cookie(_COOKIES_ACCEPTED, true, {path: '/', expires: 365});
+                modal.classList.remove('show');
+                modal.remove();
+            });
+
+            if (cancel) cancel.addEventListener('click', () => {
+                modal.classList.remove('show');
+            });
+        }
     }
 
     if (latestTask) {

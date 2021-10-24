@@ -14,6 +14,8 @@ const _LOCAL_SUM_HISTORY = '_sum_history';
 
 const _ACE_THEME = '_ace-theme';
 
+const _COOKIES_ACCEPTED = '_cookies_accepted';
+
 // * Endpoints * //
 const ENDPOINTS = {
     todo: {
@@ -22,6 +24,12 @@ const ENDPOINTS = {
         update: '/api/todo/update',      // done, task, id
         delete: '/api/todo/delete',      // id
     }
+};
+
+const startingLanguageCode = {
+    js: '// Type your code here...',
+    py: '# Type your code here...',
+    cs: '// Type your code here...'
 };
 
 // * FILE * //

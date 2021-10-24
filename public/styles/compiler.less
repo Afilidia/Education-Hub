@@ -558,6 +558,36 @@ section {
 
                     .output {
                         border-bottom-right-radius: inherit;
+
+                        .loader {
+                            width: 70px;
+                            height: 70px;
+
+                            border-radius: 50%;
+                            border-top: solid 6px @gray;
+                            border-bottom: solid 6px @gray;
+
+                            opacity: 0;
+                            z-index: -1;
+                            transition: 300ms all ease-out;
+                            position: relative;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+
+                            @keyframes animation {
+                                0%, 100% {
+                                    transform: translate(-50%, -50%) rotate(360deg);
+                                }
+                            }
+
+                            &.show {
+                                opacity: 1;
+                                z-index: 2;
+
+                                animation: spin 500ms linear infinite;
+                            }
+                        }
                     }
                 }
 
