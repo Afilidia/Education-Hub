@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
 
     function checkData(data) {
-        return !((data.login.length < 3) && (data.password.length < 8));
+        return ((data.login.length < 3) && (data.password.length < 8));
     }
 
     let error = getParam('error');
@@ -28,7 +28,7 @@ $(document).ready(function () {
                 login = data[0].value;
 
             if (error.classList.contains('show')) error.classList.remove('show');
-            else if (checkData({
+            if (checkData({
                 login: login,
                 password: password
             })) {
