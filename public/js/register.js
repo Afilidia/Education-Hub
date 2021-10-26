@@ -15,9 +15,7 @@ $(document).ready(function () {
     let err_element = document.getElementById('error-msg');
     if (error != null && err_element) err_element.classList.toggle('show');
 
-    $('#register-form').submit(function(event) {
-        event.preventDefault();
-        
+    $('#register-form').submit(async function (event) {        
         var data = $("#register-form").serializeArray();
         var error = document.getElementById('error-msg');
         
@@ -63,5 +61,6 @@ $(document).ready(function () {
             error.innerText = "Passwords are not the same!";
             error.classList.toggle('show');
         }
+        event.preventDefault();
     });
 });
