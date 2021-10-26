@@ -18,11 +18,9 @@ $(document).ready(function () {
     $('#register-form').submit(function(event) {
         var data = $("#register-form").serializeArray();
         var error = document.getElementById('error-msg');
-
-        console.log(data);
         
         // * The same passwords
-        if (data[1].value != data[2].value) {
+        if (data[1].value === data[2].value) {
 
             let password = data[1].value,
                 login = data[0].value;
