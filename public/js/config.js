@@ -36,6 +36,22 @@ const USER_CODE = {
     php: ``
 };
 
+const modes = {
+    js: "ace/mode/javascript",
+    py: "ace/mode/python",
+    cs: "ace/mode/csharp",
+    java: "ace/mode/java",
+    php: "ace/mode/php",
+};
+
+const files = {
+    js: 'app.js',
+    py: 'main.py',
+    cs: 'main.cs',
+    java: 'main.jar',
+    php: 'index.php'
+}
+
 const startingLanguageCode = {
     js: `// This is a automatically generated Javascript file\n// Click the 'Run' button on the right to see the output\n\n(function () {\n\tconsole.log('Hello world!');\n})();`,
     py: `# This is a automatically generated Python file\n# Click the 'Run' button on the right to see the output\n\nif __name__ == '__main__':\n\tprint("Hello world!")\n`,

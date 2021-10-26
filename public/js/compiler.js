@@ -16,21 +16,10 @@ $(document).ready(async function () {
 
     var theme = true;
 
-    const modes = {
-        js: "ace/mode/javascript",
-        py: "ace/mode/python",
-        cs: "ace/mode/csharp",
-        java: "ace/mode/java",
-        php: "ace/mode/php",
-    };
 
-    const files = {
-        js: 'app.js',
-        py: 'main.py',
-        cs: 'main.cs',
-        java: 'main.jar',
-        php: 'index.php'
-    }
+    pypyjs.ready().then(function() {
+        console.log('pypyjs ready');
+    });
 
 
     // * Plug input & output to the lib functions
