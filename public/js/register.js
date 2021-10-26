@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
 
     function checkData(data) {
-        return ((data.login.length < 3) || (data.password.length < 8));
+        return ((data.login.length < 3) && (data.password.length < 8));
     }
 
     let error = getParam('error');
@@ -52,11 +52,10 @@ $(document).ready(function () {
 
             }).then(function (data) {
                 console.log(data);
-
+                window.location = "/app";
             }).catch(function (error) {
                 console.warn('Something went wrong.', error);
             });
-
         } else {
             error.innerText = "Passwords are not the same!";
             error.classList.toggle('show');
