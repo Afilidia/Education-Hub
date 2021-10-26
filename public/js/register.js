@@ -15,12 +15,12 @@ $(document).ready(function () {
     let err_element = document.getElementById('error-msg');
     if (error != null && err_element) err_element.classList.toggle('show');
 
-    $('#register-form').submit(async function (event) {  
+    $('#register-form').submit(async function (event) {
         event.preventDefault();
-        
+
         var data = $("#register-form").serializeArray();
         var error = document.getElementById('error-msg');
-        
+
         // * The same passwords
         if (data[1].value === data[2].value) {
 
@@ -55,10 +55,12 @@ $(document).ready(function () {
 
             }).then(function (data) {
                 console.log(data);
-                window.location.href = "https://edu.afilidia.com/app";
+                window.location.href = "/app";
+
             }).catch(function (error) {
                 console.warn('Something went wrong.', error);
             });
+
         } else {
             error.innerText = "Passwords are not the same!";
             error.classList.toggle('show');

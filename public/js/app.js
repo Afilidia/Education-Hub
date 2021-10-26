@@ -9,7 +9,7 @@ $(document).ready(async function () {
     if ($.cookie(_TOKEN_COOKIE) != null && avatar) {
         let nickname = await getNickname();
         avatar.innerHTML = `<img src="/resources/illustrations/avatar.svg" class="icon48"> <span class="nickname">${nickname}</span>`;
-        avatar.setAttribute('href', '/app'); 
+        avatar.setAttribute('href', '/app');
         avatar.classList.toggle('avatar-mode');
     }
 
@@ -36,7 +36,7 @@ $(document).ready(async function () {
     if (latestTask) {
         var tasks = await getTasks();
         let latest = getLatestTask(tasks);
-        latestTask.textContent = latest.task;
+        if (latest) latestTask.textContent = latest.task;
     }
 
     async function getNickname() {

@@ -76,14 +76,14 @@ nav#navigation {
         .menu {
             position: fixed;
             top: 0;
-            left: 0;
+            left: 0 !important;
             z-index: 3;
             transform: translateY(-200px);
             opacity: 0;
             transition: 300ms all cubic-bezier(0.215, 0.610, 0.355, 1);
 
             &.slide {
-                transform: translateY(0);
+                transform: translateY(0) translateX(0);
                 width: 100vw;
                 height: 100vh;
                 background: linear-gradient(to top, @medium-blue, @blue 80%);
@@ -107,7 +107,7 @@ nav#navigation {
 
         .buttons {
             position: fixed;
-            bottom: 20%;
+            bottom: 10%;
             left: 50%;
             opacity: 0;
             display: none !important;
@@ -179,7 +179,9 @@ nav#navigation {
     }
 
     .menu {
-
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
         align-items: center;
         justify-content: center;
