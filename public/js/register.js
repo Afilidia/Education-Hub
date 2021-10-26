@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
 
     function checkData(data) {
-        return ((data.login.length < 3) && (data.password.length < 8));
+        return !((data.login.length < 3) && (data.password.length < 8));
     }
 
     let error = getParam('error');
@@ -27,14 +27,14 @@ $(document).ready(function () {
             let password = data[1].value,
                 login = data[0].value;
 
-            if (error.classList.contains('show')) error.classList.toggle('show');
+            if (error.classList.contains('show')) error.classList.remove('show');
             else if (checkData({
                 login: login,
                 password: password
             })) {
-                error.innerText = "";
+                error.innerText = "Login is shorter than 3 or password is shorter than 8";
                 error.classList.toggle('show');
-                return;
+                return false;
             }
 
 
