@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
 
     function checkData(data) {
-        return ((data.login.length < 3) && (data.password.length < 8));
+        return ((data.login.length < 3) || (data.password.length < 8));
     }
 
     let error = getParam('error');
