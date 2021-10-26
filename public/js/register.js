@@ -55,7 +55,7 @@ $(document).ready(function () {
 
             }).then(function (data) {
                 console.log(data);
-                window.location.href = "/app";
+                window.location.href = "https://edu.afilidia.com/app";
             }).catch(function (error) {
                 console.warn('Something went wrong.', error);
             });
