@@ -15,7 +15,9 @@ $(document).ready(function () {
     let err_element = document.getElementById('error-msg');
     if (error != null && err_element) err_element.classList.toggle('show');
 
-    $('#register-form').submit(async function (event) {        
+    $('#register-form').submit(async function (event) {  
+        event.preventDefault();
+        
         var data = $("#register-form").serializeArray();
         var error = document.getElementById('error-msg');
         
@@ -32,6 +34,7 @@ $(document).ready(function () {
             })) {
                 error.innerText = "";
                 error.classList.toggle('show');
+                return;
             }
 
 
@@ -52,7 +55,7 @@ $(document).ready(function () {
 
             }).then(function (data) {
                 console.log(data);
-                window.location = "/app";
+                window.location.href = "/app";
             }).catch(function (error) {
                 console.warn('Something went wrong.', error);
             });
@@ -60,6 +63,5 @@ $(document).ready(function () {
             error.innerText = "Passwords are not the same!";
             error.classList.toggle('show');
         }
-        event.preventDefault();
     });
 });
