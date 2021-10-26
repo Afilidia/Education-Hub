@@ -20,6 +20,7 @@ $(document).ready(function () {
         var error = document.getElementById('error-msg');
 
         console.log(data);
+        
         // * The same passwords
         if (data[1].value != data[2].value) {
 
