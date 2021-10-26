@@ -19,6 +19,7 @@ $(document).ready(function () {
         var data = $("#register-form").serializeArray();
         var error = document.getElementById('error-msg');
 
+        console.log(data);
         // * The same passwords
         if (data[1].value != data[2].value) {
 
