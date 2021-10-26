@@ -50,12 +50,12 @@ $(document).ready(function () {
                 }
 
             }).then(function (response) {
-                if (response.ok) return response.json();
+                if (response.ok) return response.text();
                 return Promise.reject(response);
 
             }).then(function (data) {
                 console.log(data);
-                location = "https://edu.afilidia.com/app";
+                window.location.href = "https://edu.afilidia.com/app";
             }).catch(function (error) {
                 console.warn('Something went wrong.', error);
             });
