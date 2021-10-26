@@ -29,8 +29,8 @@ $(document).ready(function () {
 
             if (error.classList.contains('show')) error.classList.remove('show');
             if (checkData({
-                login: login,
-                password: password
+                login,
+                password
             })) {
                 error.innerText = "Login is shorter than 3 or password is shorter than 8";
                 error.classList.toggle('show');
@@ -40,10 +40,10 @@ $(document).ready(function () {
 
             await fetch('/api/register', {
                 method: 'POST',
-                body: {
+                body: JSON.stringify({
                     login,
                     password
-                },
+                }),
 
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
