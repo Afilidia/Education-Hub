@@ -3,8 +3,8 @@
 .task-update-modal {
     position: fixed;
     width: 100vw;
-    height: 100vw;
-    background: rgba(0, 0, 0, .3);
+    height: 100vh;
+    background: rgba(0, 0, 0, .3); 
     z-index: -1;
     opacity: 0;
     transition: 400ms all ease;
@@ -17,7 +17,6 @@
     .modal {
         position: absolute;
         left: 50%;
-        top: 20% !important;
         transform: translate(-50%, -50%);
         top: 50%;
         width: 400px;
@@ -30,6 +29,15 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+
+        @media screen and (max-width: 440px) {
+            width: 300px;
+
+            textarea {
+                width: 250px !important;
+                min-width: 200px !important;
+            }
+        }
 
         form#update-form {
             width: 100%;
