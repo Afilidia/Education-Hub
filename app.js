@@ -1,4 +1,4 @@
-let 
+let
 framework = require('./framework'),
 config = framework.config(),
 fs = require('fs'),
@@ -93,6 +93,6 @@ app.use(function(err, req, res, next) {
 });
 
 stats.load();
-framework.log(0, 'Loaded');
+console.log('Loaded');
 
 module.exports = app;
