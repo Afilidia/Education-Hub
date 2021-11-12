@@ -1,4 +1,4 @@
-let
+let 
 framework = require('./framework'),
 config = framework.config(),
 fs = require('fs'),
