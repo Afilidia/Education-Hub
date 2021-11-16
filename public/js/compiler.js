@@ -2,6 +2,8 @@
 
 'use strict';
 
+import { py_compiler } from '/js/compilers/python/init.js';
+
 $(document).ready(async function () {
     var input = document.getElementById('input'),
         output = document.getElementById('output');
@@ -10,16 +12,11 @@ $(document).ready(async function () {
     var run = document.getElementById('run');
     var code = getStartingCode(currentLanguage);
     var filename = document.getElementById('filename');
-
+ 
     var options = document.getElementById('app-cover').querySelectorAll('.option');
     var buttons = document.querySelectorAll('.editor-btn');
 
     var theme = true;
-
-
-    pypyjs.ready().then(function() {
-        console.log('pypyjs ready');
-    });
 
 
     // * Plug input & output to the lib functions
@@ -131,7 +128,16 @@ $(document).ready(async function () {
     if (run) run.addEventListener('click', () => {
         let code = editor.getValue();
 
+        // * Clear the console
+        output.innerHTML = '';
+
         // * Send to server
+        switch (currentLanguage) {
+
+            case 'py': {
+                py_compiler.run(code, sendOutputToConsole);
+            } break;
+        }
     });
 
 
@@ -156,6 +162,12 @@ $(document).ready(async function () {
         let user_code = getCodeFromCookies();
         if (user_code[currentLanguage] != getStartingCode(currentLanguage) && user_code[currentLanguage] != '') editor.setValue(user_code[currentLanguage]);
         else editor.setValue(getStartingCode(currentLanguage));
+    }
+
+    function sendOutputToConsole(content) {
+        console.log(typeof content);
+        console.log(content);
+        output.innerHTML = content;
     }
 
     // * Gets value from editor

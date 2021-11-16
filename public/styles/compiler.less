@@ -571,7 +571,7 @@ section {
                             opacity: 0;
                             z-index: -1;
                             transition: 300ms all ease-out;
-                            position: relative;
+                            position: absolute;
                             left: 50%;
                             top: 50%;
                             transform: translate(-50%, -50%);
@@ -618,6 +618,13 @@ section {
                                     transform: rotate(360deg);
                                 }
                             }
+                        }
+
+                        pre#output {
+                            width: 100%;
+                            height: 100%;
+
+                            color: #fff;
                         }
                     }
                 }
