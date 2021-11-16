@@ -2,17 +2,24 @@
 
 'use strict';
 
-import { py_compiler } from '/js/compilers/python/init.js';
+import { py_compiler, StopExecution } from '/js/compilers/python/init.js';
+
+// ? Initialize all compilers
+py_compiler.init();
 
 $(document).ready(async function () {
     var input = document.getElementById('input'),
         output = document.getElementById('output');
 
+    const loader = document.getElementById('console-loader');
+    if (loader) loader.classList.remove('show');
+
     var currentLanguage = 'js';
     var run = document.getElementById('run');
+    var clear = document.getElementById('clear-btn');
     var code = getStartingCode(currentLanguage);
     var filename = document.getElementById('filename');
- 
+
     var options = document.getElementById('app-cover').querySelectorAll('.option');
     var buttons = document.querySelectorAll('.editor-btn');
 
@@ -77,6 +84,7 @@ $(document).ready(async function () {
     if (buttons) buttons.forEach(button => {
         button.addEventListener('click', () => {
             let type = button.getAttribute('data-type');
+
             switch (type) {
                 case 'download': {
                     // * Download current file
@@ -128,6 +136,8 @@ $(document).ready(async function () {
     if (run) run.addEventListener('click', () => {
         let code = editor.getValue();
 
+        ClearButtonState.swap(true);
+
         // * Clear the console
         output.innerHTML = '';
 
@@ -135,9 +145,23 @@ $(document).ready(async function () {
         switch (currentLanguage) {
 
             case 'py': {
-                py_compiler.run(code, sendOutputToConsole);
+                py_compiler.run(code, sendOutputToConsole, function () {
+                    ClearButtonState.swap(false);
+                });
+
+                if (py_compiler.error) {
+                    sendOutputToConsole(py_compiler.error_msg, true);
+                    py_compiler.error = false;
+                    py_compiler.error_msg = '';
+                }
             } break;
         }
+    });
+
+    if (clear) clear.addEventListener('click', () => {
+        ClearButtonState.swap(false);
+        if (!StopExecution) output.innerHTML = '';
+        py_compiler.stop();
     });
 
 
@@ -164,11 +188,20 @@ $(document).ready(async function () {
         else editor.setValue(getStartingCode(currentLanguage));
     }
 
-    function sendOutputToConsole(content) {
-        console.log(typeof content);
-        console.log(content);
-        output.innerHTML = content;
+    // * Print result to the 'console'
+    function sendOutputToConsole(content, error) {
+        let outputWrapper = document.createElement('span');
+        let element = document.createTextNode(content);
+
+
+        if (error) outputWrapper.style.color = '#ff3333';
+
+        outputWrapper.appendChild(element);
+        output.appendChild(outputWrapper);
     }
+
+    py_compiler.error_callback = sendOutputToConsole;
+
 
     // * Gets value from editor
     function getCode() {
@@ -200,4 +233,16 @@ $(document).ready(async function () {
     function getLanguageFromCookies() {
         return $.cookie(_ACE_LANGUAGE_SELECTED);
     }
+
+    const ClearButtonState = {
+        state: false,
+
+        swap: function (state) {
+            clear.classList.toggle('stop', state);
+            if (state) clear.innerText = 'Stop';
+            else clear.innerText = 'Clear';
+
+            this.state = state;
+        }
+    };
 });

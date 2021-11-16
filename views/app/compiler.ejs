@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/styles/compiler.css">
     <link rel="stylesheet" href="/styles/components.css">
 
- 
+
     <link rel="icon" type="image/png" href="/favicon.ico"/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -129,7 +129,7 @@
 
                 <div class="output-settings">
                     <span class="output-text">Output</span>
-                    <button class="clear-btn btn">Clear</button>
+                    <button id="clear-btn" class="clear-btn btn">Clear</button>
                 </div>
             </div>
 
@@ -137,14 +137,15 @@
                 <div class="input" id="input"></div>
 
                 <div class="output">
-                    <div class="loader show">
+                    <div class="loader show" id="console-loader">
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
                     </div>
 
-                    <pre name="" id="output">DAFUQ</pre>
+                    <pre id="output">Click run button to see the output and stop to end program execution</pre>
+                    <canvas id="ui-canvas"></canvas>
                 </div>
             </div>
 
@@ -201,12 +202,12 @@
     <script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/ace/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
 
-    
+
     <!-- COMPILERS -->
 
     <!-- SCULPT FOR PYTHON -->
-    <script src="http://skulpt.org/js/skulpt.min.js" type="text/javascript"></script> 
-    <script src="http://skulpt.org/js/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/js/compilers/python/skulpt.min.js" type="text/javascript"></script>
+    <script src="/js/compilers/python/skulpt-stdlib.js" type="text/javascript"></script>
 
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

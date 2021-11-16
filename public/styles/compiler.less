@@ -108,6 +108,7 @@ section {
                 align-items: center;
                 justify-content: flex-start;
                 transition: 500ms all ease-out;
+                z-index: 3;
 
                 &.fullscreen {
                     position: fixed;
@@ -537,6 +538,11 @@ section {
                                 background-color: @medium-blue;
                                 color: #fff;
                             }
+
+                            &.stop {
+                                border-color: #ff3333 !important;
+                                background-color: #ff3333 !important;
+                            }
                         }
                     }
                 }
@@ -620,11 +626,18 @@ section {
                             }
                         }
 
+                        // * CONSOLE * //
                         pre#output {
                             width: 100%;
                             height: 100%;
 
-                            color: #fff;
+                            color: #16C60C;
+
+                            padding: 1rem;
+                            font-weight: @light;
+
+                            background-color: #0C0C0C;
+                            overflow-y: auto;
                         }
                     }
                 }
