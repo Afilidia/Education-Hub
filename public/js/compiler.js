@@ -1,5 +1,7 @@
 // -*- coding: utf-8 -*-
 
+// ? https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS
+
 'use strict';
 
 import { py_compiler, StopExecution } from '/js/compilers/python/init.js';
