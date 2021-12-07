@@ -19,6 +19,8 @@ host.style('/buttons.css', cache.styles.buttons, ()=>{
 //		Landing page	 //
 host.pager("", "landing/", ()=>{return true}, "/");
 host.pager("", "login/", (req, res)=>{if(req.cookies.token&&require("../cookies.json")[req.cookies.token]) return false; else return true;}, "/app");
-host.pager("/app", "app/", (req, res)=>{if(req.cookies.token&&require("../cookies.json")[req.cookies.token]) return true;}, "/login");
+host.pager("/app", "app/", (req, res)=>{
+  if(req.url.includes("/app/compiler") || (req.cookies.token&&require("../cookies.json")[req.cookies.token])) return true;
+}, "/login");
 
 module.exports = router;
